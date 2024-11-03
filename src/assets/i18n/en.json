@@ -1,0 +1,12 @@
+{
+  "public": {
+    "quiz": {
+      "initial": {
+        "title": "Quiz",
+        "subtitle": "Take a quiz",
+        "input_label": "Search",
+        "button": "Start quiz"
+      }
+    }
+  }
+}
