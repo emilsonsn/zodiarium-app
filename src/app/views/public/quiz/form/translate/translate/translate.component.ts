@@ -1,8 +1,7 @@
 import {Component, inject} from '@angular/core';
 import {FormService} from "@services/public/quiz/form.service";
 import {TranslateService} from "@ngx-translate/core";
-import {Observable} from "rxjs";
-import {tap} from "rxjs/operators";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-translate',
@@ -18,12 +17,19 @@ export class TranslateComponent {
     this.translate.use(key);
   }
 
-  constructor(protected formService: FormService) {
+  constructor(protected formService: FormService, private route: ActivatedRoute) {
     this.translate.onLangChange.subscribe(() => {
       this.languagesLoading = false;
     });
 
-    this.selectedLanguage = localStorage.getItem('lang') || 'en';
+    let lang = localStorage.getItem('lang') || 'en';
+    if (this.route.snapshot.params['lang']) {
+      lang = this.route.snapshot.params['lang'];
+    }
+
+    localStorage.setItem('lang', lang);
+
+    this.selectedLanguage = lang;
     this.translateText(this.selectedLanguage);
   }
 

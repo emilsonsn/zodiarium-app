@@ -114,6 +114,8 @@ export class FormService {
       lang = this.route.snapshot.params['lang'];
     }
 
+    localStorage.setItem('lang', lang);
+
     const currentStep = this.getCurrentStep();
     this.router.navigate([`/${lang}/${currentStep}`]).then();
   }
