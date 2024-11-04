@@ -12,6 +12,16 @@
             "en": "English",
             "es": "Spanish"
           }
+        },
+        "name": {
+          "title": "What’s Your Name?",
+          "subtitle": "",
+          "input_label": "Name",
+          "placeholder": "Enter your name",
+          "button": {
+            "back": "Go Back",
+            "next": "Next"
+          }
         }
       }
     }

@@ -12,6 +12,16 @@
             "en": "Inglês",
             "es": "Espanhol"
           }
+        },
+        "name": {
+          "title": "Como te chamas?",
+          "subtitle": "",
+          "input_label": "Nome",
+          "placeholder": "Introduza o seu nome",
+          "button": {
+            "back": "Voltar",
+            "next": "Seguinte"
+          }
         }
       }
     }

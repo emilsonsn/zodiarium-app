@@ -1,1 +1,29 @@
-<p>name works!</p>
+<form (ngSubmit)="submitForm()">
+  <img src="" alt="logo">
+
+  <div class="form-name-title">
+    <h2 class="">{{ "public.quiz.form.name.title" | translate }}</h2>
+    <p>{{ "public.quiz.form.name.subtitle" | translate }}</p>
+  </div>
+
+  <div class="form-name-input">
+    <div class="col-md-6 w-100">
+      <span class="fw-bolder">{{ "public.quiz.form.name.input_label" | translate }}</span>
+      <mat-form-field appearance="outline" class="w-100">
+        <input matInput placeholder="{{ 'public.quiz.form.name.placeholder' | translate }}" [(ngModel)]="name" name="name" required>
+      </mat-form-field>
+    </div>
+    <div class="row">
+      <div class="col-6">
+        <button color="primary" class="w-100" mat-raised-button (click)="goBack()" >
+          {{ "public.quiz.form.name.button.back" | translate }}
+        </button>
+      </div>
+      <div class="col-6">
+        <button color="primary" class="w-100" mat-raised-button type="submit">
+          {{ "public.quiz.form.name.button.next" | translate }}
+        </button>
+      </div>
+    </div>
+  </div>
+</form>
