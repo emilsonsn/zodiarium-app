@@ -1,1 +1,17 @@
-<router-outlet></router-outlet>
+<div class="quiz-form-main">
+  <div class="quiz-form-progress">
+    <div class="quiz-form-progress-icons">
+      @for (icon of formService.stepsIcons; track icon; let i = $index) {
+        <div class="progress-icon" [ngClass]="{ 'active': formService.getCurrentStepIndex() === i }">
+          <i class="{{icon}}"></i>
+        </div>
+      }
+    </div>
+    <mat-progress-bar
+      mode="determinate"
+      [value]="((formService.getCurrentStepIndex() + 1)  * 100) / formService.getLengthSteps()"/>
+  </div>
+  <div class="quiz-form-router">
+    <router-outlet></router-outlet>
+  </div>
+</div>

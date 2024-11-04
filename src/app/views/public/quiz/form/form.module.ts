@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { FormRoutingModule } from './form-routing.module';
 import { FormComponent } from './form/form.component';
+import {MatProgressBar} from "@angular/material/progress-bar";
 
 
 @NgModule({
@@ -11,7 +12,8 @@ import { FormComponent } from './form/form.component';
   ],
   imports: [
     CommonModule,
-    FormRoutingModule
+    FormRoutingModule,
+    MatProgressBar
   ]
 })
 export class FormModule { }

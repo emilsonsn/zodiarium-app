@@ -11,7 +11,7 @@
       <span class="fw-bolder">{{ "public.quiz.form.translate.input_label" | translate }}</span>
       <mat-form-field appearance="outline" class="w-100">
         <mat-select [(ngModel)]="selectedLanguage" name="language">
-          <mat-option *ngIf="languagesLoading" disabled>
+          <mat-option *ngIf="formService.languagesLoading" disabled>
           </mat-option>
           <mat-option value="pt-PT">{{ "public.quiz.form.translate.languages.pt-PT" | translate }}</mat-option>
           <mat-option value="en">{{ "public.quiz.form.translate.languages.en" | translate }}</mat-option>

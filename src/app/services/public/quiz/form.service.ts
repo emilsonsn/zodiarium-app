@@ -1,12 +1,13 @@
-import {Injectable} from '@angular/core';
+import {inject, Injectable} from '@angular/core';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {filter} from "rxjs";
+import {TranslateService} from "@ngx-translate/core";
 
 @Injectable({
   providedIn: 'root'
 })
 export class FormService {
-
+  translate: TranslateService = inject(TranslateService);
   private steps = [
     '',
     'name',
@@ -16,16 +17,32 @@ export class FormService {
     'place',
     'report'
   ];
+
+  public stepsIcons = [
+    "fa-solid fa-language",
+    "fa-solid fa-signature",
+    "fa-solid fa-venus-mars",
+    "fa-solid fa-cake-candles",
+    "fa-solid fa-clock",
+    "fa-solid fa-map-location-dot",
+    "fa-solid fa-file-lines"
+  ]
   private currentStepIndex = 0;
   private responses: { [key: string]: any } = {};
+  languagesLoading: boolean = true;
 
   constructor(private router: Router, private route: ActivatedRoute) {
+    this.translate.onLangChange.subscribe(() => {
+      this.languagesLoading = false;
+    });
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd)
     ).subscribe((event: NavigationEnd) => {
+
+      console.log("event", event);
       const currentUrl = this.router.url;
 
-      const currentUrlArray = currentUrl.split("/")
+      const currentUrlArray = currentUrl.split("/");
 
       const stepIndex = this.steps.indexOf(currentUrlArray[currentUrlArray.length - 1]);
 
@@ -54,7 +71,7 @@ export class FormService {
     if (this.currentStepIndex < this.steps.length - 1) {
       this.currentStepIndex++;
       this.saveProgress();
-      this.navigateToCurrentStep();
+      this.navigateToCurrentStep(true);
     }
   }
 
@@ -63,8 +80,12 @@ export class FormService {
     if (this.currentStepIndex > 0) {
       this.currentStepIndex--;
       this.saveProgress();
-      this.navigateToCurrentStep();
+      this.navigateToCurrentStep(true);
     }
+  }
+
+  public getLengthSteps() {
+    return this.steps.length
   }
 
   getCurrentStepIndex(): number {
@@ -106,17 +127,25 @@ export class FormService {
     this.responses = []; // ou o valor inicial desejado
   }
 
+  translateText(key: string) {
+    this.translate.use(key);
+  }
+
 
   // Navegar para a etapa atual baseada no índice
-  private navigateToCurrentStep() {
+  private navigateToCurrentStep(force = false) {
     let lang = localStorage.getItem('lang') || 'en';
-    if (this.route.snapshot.params['lang']) {
-      lang = this.route.snapshot.params['lang'];
-    }
 
     localStorage.setItem('lang', lang);
 
+    if (!force) {
+      const currentUrl = this.router.url;
+      lang = currentUrl.split("/")[1];
+    }
+
+    this.translateText(lang);
+
     const currentStep = this.getCurrentStep();
-    this.router.navigate([`/${lang}/${currentStep}`]).then();
+    this.router.navigate([`/${lang}/${currentStep}`], {replaceUrl: true}).then();
   }
 }
