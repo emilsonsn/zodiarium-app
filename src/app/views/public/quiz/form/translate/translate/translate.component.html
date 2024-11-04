@@ -1,0 +1,26 @@
+<form (ngSubmit)="submitForm()">
+  <img src="" alt="logo">
+
+  <div class="form-translate-title">
+    <h2 class="">{{ "public.quiz.form.translate.title" | translate }}</h2>
+    <p>{{ "public.quiz.form.translate.subtitle" | translate }}</p>
+  </div>
+
+  <div class="form-translate-input">
+    <div class="col-md-6 w-100">
+      <span class="fw-bolder">{{ "public.quiz.form.translate.input_label" | translate }}</span>
+      <mat-form-field appearance="outline" class="w-100">
+        <mat-select [(ngModel)]="selectedLanguage" name="language">
+          <mat-option *ngIf="languagesLoading" disabled>
+          </mat-option>
+          <mat-option value="pt-PT">{{ "public.quiz.form.translate.languages.pt-PT" | translate }}</mat-option>
+          <mat-option value="en">{{ "public.quiz.form.translate.languages.en" | translate }}</mat-option>
+          <mat-option value="es">{{ "public.quiz.form.translate.languages.es" | translate }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <button color="primary" class="w-100" mat-raised-button type="submit">
+      {{ "public.quiz.form.translate.button" | translate }}
+    </button>
+  </div>
+</form>

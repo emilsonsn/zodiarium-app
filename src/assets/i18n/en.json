@@ -1,11 +1,18 @@
 {
   "public": {
     "quiz": {
-      "initial": {
-        "title": "Quiz",
-        "subtitle": "Take a quiz",
-        "input_label": "Search",
-        "button": "Start quiz"
+      "form": {
+        "translate": {
+          "title": "Your In-Depth Natal Chart Analysis",
+          "subtitle": "No confusing jargon, just clear and detailed insights to help you understand yourself and your life on a deeper level",
+          "input_label": "Select Language",
+          "button": "Get Started",
+          "languages": {
+            "pt-PT": "Portuguese (Portugal)",
+            "en": "English",
+            "es": "Spanish"
+          }
+        }
       }
     }
   }

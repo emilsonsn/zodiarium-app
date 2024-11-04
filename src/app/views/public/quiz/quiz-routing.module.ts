@@ -8,8 +8,8 @@ const routes: Routes = [
     component: QuizComponent,
     children: [
       {
-        path: 'initial',
-        loadChildren: () => import('./initial/initial.module').then(m => m.InitialModule)
+        path: '',
+        loadChildren: () => import('./form/form.module').then(m => m.FormModule)
       }
     ]
   }

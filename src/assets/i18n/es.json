@@ -1,0 +1,19 @@
+{
+  "public": {
+    "quiz": {
+      "form": {
+        "translate": {
+          "title": "Análisis Detallado de Tu Carta Natal",
+          "subtitle": "Sin jerga confusa, solo información clara y detallada para ayudarte a comprenderte a ti mismo y tu vida a un nivel más profundo",
+          "input_label": "Seleccionar Idioma",
+          "button": "Comenzar",
+          "languages": {
+            "pt-PT": "Portugués (Portugal)",
+            "en": "Inglés",
+            "es": "Español"
+          }
+        }
+      }
+    }
+  }
+}
