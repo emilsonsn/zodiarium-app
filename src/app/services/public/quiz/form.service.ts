@@ -35,9 +35,9 @@ export class FormService {
         this.clearProgress();
       }
 
-      this.loadProgress();
-      this.navigateToCurrentStep();
     });
+    this.loadProgress();
+    this.navigateToCurrentStep();
   }
 
   // Obter a etapa atual
