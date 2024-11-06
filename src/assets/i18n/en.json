@@ -22,6 +22,16 @@
             "back": "Go Back",
             "next": "Next"
           }
+        },
+        "gender": {
+          "title": "What’s Your Gender?",
+          "button": {
+            "male": "Male",
+            "female": "Female",
+            "other": "Other",
+            "back": "Go Back",
+            "next": "Next"
+          }
         }
       }
     }
