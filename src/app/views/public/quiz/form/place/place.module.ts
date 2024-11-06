@@ -3,6 +3,9 @@ import { CommonModule } from '@angular/common';
 
 import { PlaceRoutingModule } from './place-routing.module';
 import { PlaceComponent } from './place/place.component';
+import {FormsModule} from "@angular/forms";
+import {TranslatePipe} from "@ngx-translate/core";
+import {MatButton} from "@angular/material/button";
 
 
 @NgModule({
@@ -11,7 +14,10 @@ import { PlaceComponent } from './place/place.component';
   ],
   imports: [
     CommonModule,
-    PlaceRoutingModule
+    PlaceRoutingModule,
+    FormsModule,
+    TranslatePipe,
+    MatButton
   ]
 })
 export class PlaceModule { }

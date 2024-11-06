@@ -32,13 +32,9 @@ const routes: Routes = [
         loadChildren: () => import('./place/place.module').then(m => m.PlaceModule),
       },
       {
-        path: 'report/error',
-        loadChildren: () => import('./report/error/error.module').then(m => m.ErrorModule),
-      },
-      {
-        path: 'report/chart',
-        loadChildren: () => import('./report/chart/chart.module').then(m => m.ChartModule),
-      },
+        path: 'report',
+        loadChildren: () => import('./report/report.module').then(m => m.ReportModule),
+      }
     ]
   },
   {

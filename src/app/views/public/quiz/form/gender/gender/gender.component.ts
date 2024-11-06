@@ -16,7 +16,7 @@ export class GenderComponent {
   }
 
   submitForm() {
-    this.formService.completeStep({name: this.name});
+    this.formService.completeStep({teste: this.name});
   }
 
   goBack() {

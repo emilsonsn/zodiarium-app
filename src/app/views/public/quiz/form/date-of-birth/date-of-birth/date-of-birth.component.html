@@ -1,1 +1,25 @@
-<p>date-of-birth works!</p>
+<form (ngSubmit)="submitForm()">
+  <img src="" alt="logo">
+
+  <div class="form-date-of-birth-title">
+    <h2 class="">{{ "public.quiz.form.date-of-birth.title" | translate }}</h2>
+    <!--    <p>{{ "public.quiz.form.date-of-birth.subtitle" | translate }}</p>-->
+  </div>
+
+  <div class="form-date-of-birth-input">
+    <div class="col-md-6 w-100">
+
+
+    </div>
+    <div class="buttons">
+      <button color="primary" class="w-25" mat-raised-button type="button" (click)="goBack()">
+        <i class="fa-solid fa-arrow-left"></i>
+        <!--          {{ "public.quiz.form.date-of-birth.button.back" | translate }}-->
+      </button>
+      <button color="primary" class="w-50" mat-raised-button type="submit">
+        {{ "public.quiz.form.date-of-birth.button.next" | translate }}
+        <i class="fa-solid fa-arrow-right arrow"></i>
+      </button>
+    </div>
+  </div>
+</form>
