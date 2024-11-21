@@ -1,63 +1,32 @@
-/* To learn more about Typescript configuration file: https://www.typescriptlang.org/docs/handbook/tsconfig-json.html. */
-/* To learn more about Angular compiler options: https://angular.dev/reference/configs/angular-compiler-options. */
+/* To learn more about this file see: https://angular.io/config/tsconfig. */
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "baseUrl": "./",
-    "paths": {
-      "@utils/*": [
-        "src/app/utils/*"
-      ],
-      "@shared/*": [
-        "src/app/shared/*"
-      ],
-      "@services/*": [
-        "src/app/services/*"
-      ],
-      "@models/*": [
-        "src/app/models/*"
-      ],
-      "@store/*": [
-        "src/app/store/*"
-      ],
-      "@app/*": [
-        "src/app/*"
-      ],
-      "@env/*": [
-        "src/environments/*"
-      ],
-      "@assets/*": [
-        "src/assets/*"
-      ]
-    },
     "outDir": "./dist/out-tsc",
-    // "strict": true,
-    // "noImplicitOverride": true,
-    // "noPropertyAccessFromIndexSignature": true,
-    // "noImplicitReturns": true,
-    // "noFallthroughCasesInSwitch": true,
-    // "skipLibCheck": true,
-    // "esModuleInterop": true,
+    "strict": true,
+    "noImplicitOverride": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
     "sourceMap": true,
     "declaration": false,
-    "downlevelIteration": true,
     "experimentalDecorators": true,
-    "allowSyntheticDefaultImports": true,
     "moduleResolution": "node",
     "importHelpers": true,
     "target": "ES2022",
     "module": "ES2022",
+    "useDefineForClassFields": false,
     "lib": [
       "ES2022",
       "dom"
-    ],
-    "useDefineForClassFields": false
+    ]
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": true,
-    "strictTemplates": true,
-		"fullTemplateTypeCheck": true,
+    "strictTemplates": true
   }
 }
