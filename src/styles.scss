@@ -1,0 +1,48 @@
+@import 'ngx-toastr/toastr';
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
+
+
+img {
+  -webkit-user-drag: none; /* Para navegadores baseados em WebKit (Chrome, Safari) */
+  -moz-user-drag: none; /* Para Firefox */
+  -ms-user-drag: none; /* Para Internet Explorer e Edge */
+  user-drag: none;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Myriad Pro', sans-serif;
+}
+
+html, body {
+  height: 100%;
+}
+
+
+::-webkit-scrollbar {
+  width: 5px;
+  height: 2px;
+}
+
+/* Track */
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Handler */
+
+::-webkit-scrollbar-thumb {
+  border-radius: 1rem;
+}
+
+/* Handler on Hover */
+
+::-webkit-scrollbar-track:hover {
+  /*background: #555;*/
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

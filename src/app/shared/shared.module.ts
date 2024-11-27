@@ -1,37 +1,16 @@
-import {NgModule} from '@angular/core';
+import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {MatPaginatorIntl} from "@angular/material/paginator";
-import {PaginatorPtBR} from "./config/paginator";
-import {ComponentsModule} from "./components/components.module";
-import {DialogsModule} from "./dialogs/dialogs.module";
-import {DirectivesModule} from "./directives/directives.module";
-import {PipesModule} from "./pipes/pipes.module";
-import {TablesModule} from "./tables/tables.module";
-import {LayoutsModule} from "@shared/layouts/layouts.module";
-
+import {LayoutsModule} from './layouts/layouts.module';
 
 @NgModule({
   declarations: [],
   imports: [
     CommonModule,
-    ComponentsModule,
-    DialogsModule,
-    DirectivesModule,
-    LayoutsModule,
-    PipesModule,
-    TablesModule
+    LayoutsModule
   ],
   exports: [
-    ComponentsModule,
-    DialogsModule,
-    DirectivesModule,
-    LayoutsModule,
-    PipesModule,
-    TablesModule
+    LayoutsModule
   ],
-  providers: [
-    {provide: MatPaginatorIntl, useClass: PaginatorPtBR},
-  ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class SharedModule {
-}
+export class SharedModule {}

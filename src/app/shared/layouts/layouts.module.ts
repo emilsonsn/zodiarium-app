@@ -1,29 +1,28 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { LayoutPrivateComponent } from './layout-private/layout-private.component';
-import { SidebarComponent } from './layout-private/sidebar/sidebar.component';
-import { HeaderComponent } from './layout-private/header/header.component';
-import { FooterComponent } from './layout-private/footer/footer.component';
-import {RouterLink, RouterLinkActive, RouterOutlet} from "@angular/router";
+import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {LayoutPublicComponent} from './layout-public/layout-public.component';
+import {RouterOutlet} from "@angular/router";
+import { HeaderComponent } from './layout-public/header/header.component';
+import { FooterComponent } from './layout-public/footer/footer.component';
+import { SidebarComponent } from './layout-public/sidebar/sidebar.component';
 import {MatDivider} from "@angular/material/divider";
-import { MatRippleModule } from '@angular/material/core';
-
-
 
 @NgModule({
   declarations: [
-    LayoutPrivateComponent,
-    SidebarComponent,
+    LayoutPublicComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    SidebarComponent
   ],
   imports: [
     CommonModule,
     RouterOutlet,
-    RouterLink,
     MatDivider,
-    MatRippleModule,
-    RouterLinkActive
-  ]
+  ],
+  exports: [
+    LayoutPublicComponent
+  ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class LayoutsModule { }
+export class LayoutsModule {
+}
