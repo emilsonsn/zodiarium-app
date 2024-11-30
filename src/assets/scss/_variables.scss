@@ -1,0 +1,27 @@
+// Paleta de cores
+$primary-color: #202260;
+$secondary-color: #EAEEF7;
+$background-color: #FFF0F0;
+$accent-color: #ff4081;
+$error-color: #b00020;
+$text-color: #212121;
+
+// Sombras e variações
+$primary-light: lighten($primary-color, 20%);
+$primary-dark: darken($primary-color, 20%);
+
+// Exportando a paleta como mapa
+$theme-colors: (
+  "primary": $primary-color,
+  "secondary": $secondary-color,
+  "accent": $accent-color,
+  "error": $error-color,
+  "background": $background-color,
+  "text": $text-color
+);
+
+$breakpoint-lg: 1200px;
+$breakpoint-md: 992px;
+$breakpoint-sm: 768px;
+$breakpoint-xs: 576px;
+
