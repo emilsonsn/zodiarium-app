@@ -56,7 +56,7 @@ export class HomeComponent {
     {
       username: "joaquim_silva07",
       date: new Date(),
-      comment: "O Nebula me ajudou a entender melhor o meu relacionamento e a minha personalidade. Recomendo muito!",
+      comment: "O Zodarium me ajudou a entender melhor o meu relacionamento e a minha personalidade. Recomendo muito!",
       rating: 5
     },
     {
