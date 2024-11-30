@@ -1,10 +1,10 @@
-import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import {RouterModule} from "@angular/router";
-import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import player from 'lottie-web';
+import {provideLottieOptions} from "ngx-lottie";
 
 @NgModule({
   declarations: [
@@ -12,14 +12,14 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
-    RouterModule
+    AppRoutingModule
   ],
   providers: [
-    provideAnimationsAsync()
+    provideClientHydration(),
+    provideLottieOptions({
+      player: () => player,
+    }),
   ],
-  schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
-  bootstrap: [AppComponent],
-
+  bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,2 +1,63 @@
-<p>home works!</p>
-<router-outlet></router-outlet>
+<div class="home-content">
+  <section class="section-title">
+    <h3>Navegue pelos desafios da vida com a astrologia como seu guia</h3>
+    <p>Comece a sua jornada de autodescoberta hoje ao completar o nosso questionário e receber um plano personalizado
+      feito especialmente para si.</p>
+    <button class="button-home" routerLink="/quiz">Fazer o questionário</button>
+    <h4>Entre no mundo da Astrologia Hiperpersonalizada</h4>
+    <ng-lottie
+      containerClass="moving-box"
+      [options]="options">
+    </ng-lottie>
+    <p>O Nebula combina dados de diferentes fontes para criar um mapa astrológico personalizado, ao mesmo tempo que
+      oferece orientação amigável e agradável de astrólogos profissionais. A sua abordagem garante insights
+      personalizados
+      que tornam a exploração da astrologia divertida e acessível.</p>
+  </section>
+  <section class="group-cards">
+    <div class="row">
+      @for (item of itemPublic; track item) {
+        <div class="col-lg-6 col-md-12 mb-3">
+          <app-card-guia-public
+            [icon]="item.icon"
+            [title]="item.title"
+            [description]="item.description"
+          ></app-card-guia-public>
+        </div>
+      }
+    </div>
+  </section>
+
+  <section class="group-cards section-relacionamentos">
+    <h4>Dê um passo em direção a uma vida e relacionamentos mais felizes com milhões de outras pessoas que já estão a
+      beneficiar do Nebula</h4>
+    <div class="row w-80">
+      @for (item of itemBenefiting; track item) {
+        <div class="col-lg-6 col-md-12 mb-3">
+          <app-card-benefiting-public
+            [title]="item.title"
+            [description]="item.description"
+          ></app-card-benefiting-public>
+        </div>
+      }
+    </div>
+    <button class="button-home" (click)="scrollToTop()">Experimente agora</button>
+  </section>
+
+  <section>
+    <h4>Os utilizadores adoram-nos</h4>
+    <div class="row">
+      @for (item of itemComment; track item) {
+        <div class="col-12 mb-3 d-flex justify-content-center align-items-center">
+          <app-card-comment-public
+            [username]="item.username"
+            [date]="item.date"
+            [comment]="item.comment"
+            [rating]="item.rating"
+          >
+          </app-card-comment-public>
+        </div>
+      }
+    </div>
+  </section>
+</div>
