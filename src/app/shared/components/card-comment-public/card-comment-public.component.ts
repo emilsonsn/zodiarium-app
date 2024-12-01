@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import dayjs from "dayjs";
+import * as dayjs from 'dayjs';
 
 @Component({
   selector: 'app-card-comment-public',
