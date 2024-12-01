@@ -4,6 +4,7 @@ import { SettingThemes } from '@models/setting';
 import { SettingService } from '@services/setting.service';
 import { Utils } from '@shared/utils';
 import { ToastrService } from 'ngx-toastr';
+import { finalize } from 'rxjs';
 
 @Component({
   selector: 'app-setting',
@@ -44,6 +45,17 @@ export class SettingComponent {
       bearer_token: [null, [Validators.required]],
     })
 
+    this._initOrStopLoading();
+    this._settingService.search().pipe(finalize(() => this._initOrStopLoading())).subscribe(res => {
+      if (res.status) {
+        this.form.patchValue(res.data);
+        this.profileImage = res.data.logo;
+      }
+    })
+  }
+
+  private _initOrStopLoading(): void {
+    this.loading = !this.loading;
   }
 
   onFileSelected(event: Event): void {
@@ -102,6 +114,7 @@ export class SettingComponent {
     if (!form.valid) {
       form.markAllAsTouched();
     } else {
+      this._initOrStopLoading();
 
       const formData = new FormData();
       formData.append('company_name', form.get('company_name')?.value);
@@ -118,7 +131,8 @@ export class SettingComponent {
         formData.append('logo', this.profileImageFile);
       }
 
-      this._settingService.update(formData).subscribe(res => {
+      this._settingService.update(formData)
+      .pipe(finalize(() => this._initOrStopLoading())).subscribe(res => {
         if (res.status) {
           this._toastr.success(res.message);
         }

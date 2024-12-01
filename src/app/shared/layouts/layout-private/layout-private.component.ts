@@ -24,6 +24,18 @@ export class LayoutPrivateComponent {
       active: true
     },
     {
+      label: 'Cliente',
+      icon: 'fa-solid fa-users',
+      route: '/painel/client',
+      active: true
+    },
+    {
+      label: 'Leads',
+      icon: 'fa-solid fa-user',
+      route: '/painel/lead',
+      active: true
+    },
+    {
       label: 'Configurações',
       icon: 'fa-solid fa-gears',
       route: '/painel/setting'

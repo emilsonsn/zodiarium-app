@@ -42,7 +42,7 @@ body {
 }
 
 .loading {
-  pointer-events: none;
+  // pointer-events: none;
   position: absolute;
   display: flex;
   justify-content: center;
@@ -240,19 +240,19 @@ mat-form-field {
 
   table {
     thead {
-      background-color: $primary-color;
+      background-color: $grey5;
       height: 2.5rem;
 
       th {
         height: 4rem;
-        background-color: $primary-color;
+        background-color: $grey5;
 
         div {
           display: flex;
           align-items: center;
           height: 100%;
-          color: $primary-color;
-          background-color: $primary-color;
+          color: $black2;
+          background-color: $grey5;
         }
       }
 
