@@ -21,7 +21,6 @@
     min-width: 2.3rem;
     min-height: 2.3rem;
     border-radius: 5px;
-    border: none;
     background-color: $primary-color;
     color: white;
     font-size: larger;

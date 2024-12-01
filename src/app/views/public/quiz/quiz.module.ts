@@ -10,13 +10,21 @@ import {MatTooltip} from "@angular/material/tooltip";
 import {MatIconButton} from "@angular/material/button";
 import { BirthDateComponent } from './birth-date/birth-date.component';
 import {FormsModule} from "@angular/forms";
+import { SignComponent } from './sign/sign.component';
+import { CityComponent } from './city/city.component';
+import { HourOfTheDayComponent } from './hour-of-the-day/hour-of-the-day.component';
+import { SendComponent } from './send/send.component';
 
 
 @NgModule({
   declarations: [
     QuizComponent,
     GenderComponent,
-    BirthDateComponent
+    BirthDateComponent,
+    SignComponent,
+    CityComponent,
+    HourOfTheDayComponent,
+    SendComponent
   ],
   imports: [
     CommonModule,
