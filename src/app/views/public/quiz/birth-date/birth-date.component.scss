@@ -93,6 +93,10 @@
   opacity: 1;
   user-select: none;
   outline: none;
+
+  &:hover {
+    opacity: 0.9;
+  }
 }
 
 .birth-date-inputs {

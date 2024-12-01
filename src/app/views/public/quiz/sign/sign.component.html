@@ -1,15 +1,21 @@
-<div class="birth-date-container">
-  <div class="birth-date-card">
-    <div class="birth-date-card-header">
-      <h3>titulo</h3>
-      <p>descrição</p>
+<div class="sign-container">
+  <div class="sign-card">
+    <div class="sign-card-body">
+      <div class="lottie-container">
+        <ng-lottie
+          containerClass="moving-box"
+          *ngIf="options && !data?.zodiacSign"
+          [options]="options">
+        </ng-lottie>
+      </div>
+      <img *ngIf="data" alt="" [src]="data?.zodiacSignDetail?.icone">
+      <div class="sign-card-header" *ngIf="data">
+        <h3 *ngIf="data?.zodiacSign">{{data?.zodiacSign}}</h3>
+        <p>{{data?.zodiacSignDetail?.descricao}}</p>
+      </div>
     </div>
-
-
-
-
     <div class="w-100 d-flex justify-content-center align-items-center">
-      <button class="button-birth-date" routerLink="/quiz/city">Continuar</button>
+      <button class="button-sign" routerLink="/quiz/city" [disabled]="!data?.zodiacSign">Continuar</button>
     </div>
   </div>
 </div>

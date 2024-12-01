@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {AnimationOptions} from "ngx-lottie";
+import {ZodiacService} from "@services/quiz/zodiac.service";
 
 @Component({
   selector: 'app-birth-date',
@@ -14,30 +15,37 @@ export class BirthDateComponent {
   selectedMonth: string = '01';
   selectedDay: number = 1;
   selectedYear: number = 1994;
-  years: number[] = Array.from({ length: 100 }, (_, i) => new Date().getFullYear() - i);
+  years: number[] = Array.from({length: 100}, (_, i) => new Date().getFullYear() - i);
   days: number[] = [];
 
-  ngOnInit(): void {
-    this.updateDays();  // Atualiza os dias no início
+  constructor(private readonly zodiacService: ZodiacService) {
   }
 
-  // Função para atualizar os dias dependendo do mês e ano
+  ngOnInit(): void {
+    this.updateDays();
+  }
+
   updateDays(): void {
     const month = parseInt(this.selectedMonth, 10);
     const year = this.selectedYear || new Date().getFullYear();
 
-    // Define o número de dias por mês
     const daysInMonth = this.getDaysInMonth(month, year);
 
-    this.days = Array.from({ length: daysInMonth }, (_, i) => i + 1);
-    // Caso o dia selecionado seja maior que o máximo para o mês, ajusta
+    this.days = Array.from({length: daysInMonth}, (_, i) => i + 1);
     if (this.selectedDay && this.selectedDay > daysInMonth) {
       this.selectedDay = daysInMonth;
     }
   }
 
-  // Função para calcular o número de dias no mês, considerando ano bissexto
   getDaysInMonth(month: number, year: number): number {
     return new Date(year, month, 0).getDate();
+  }
+
+  saveDate() {
+    this.zodiacService.sendData({
+      day: this.selectedDay,
+      month: this.selectedMonth,
+      year: this.selectedYear
+    });
   }
 }

@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {NavigationEnd, Router} from "@angular/router";
 import {filter} from "rxjs";
+import {ZodiacService} from "@services/quiz/zodiac.service";
 
 @Component({
   selector: 'app-quiz',
@@ -48,7 +49,10 @@ export class QuizComponent {
     }
   ];
 
-  constructor(protected readonly router: Router) {
+  constructor(
+    protected readonly router: Router,
+    private readonly zodiacService: ZodiacService
+    ) {
   }
 
   ngOnInit(): void {
@@ -58,6 +62,10 @@ export class QuizComponent {
     ).subscribe(() => {
       this.updateSteps(this.router.url);
     });
+
+/*    this.zodiacService.data$.subscribe((data) => {
+      console.log('Received data from child:', data);
+    });*/
   }
 
   private updateSteps(currentUrl: string): void {
