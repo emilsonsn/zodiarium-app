@@ -62,8 +62,8 @@ export class HomeComponent {
     {
       username: "ana_martins85",
       date: new Date(),
-      comment: "Achei a aplicação interessante, mas alguns detalhes poderiam ser melhorados. No geral, é útil.",
-      rating: 3
+      comment: "A aplicação é excelente e tem sido extremamente útil. Estou muito satisfeita com a experiência e recomendo a todos.",
+      rating: 4
     },
     {
       username: "carlos_almeida22",
