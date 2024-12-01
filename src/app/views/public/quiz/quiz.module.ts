@@ -8,12 +8,15 @@ import {LottieComponent} from "ngx-lottie";
 import {MatProgressBar} from "@angular/material/progress-bar";
 import {MatTooltip} from "@angular/material/tooltip";
 import {MatIconButton} from "@angular/material/button";
+import { BirthDateComponent } from './birth-date/birth-date.component';
+import {FormsModule} from "@angular/forms";
 
 
 @NgModule({
   declarations: [
     QuizComponent,
-    GenderComponent
+    GenderComponent,
+    BirthDateComponent
   ],
   imports: [
     CommonModule,
@@ -21,7 +24,8 @@ import {MatIconButton} from "@angular/material/button";
     LottieComponent,
     MatProgressBar,
     MatTooltip,
-    MatIconButton
+    MatIconButton,
+    FormsModule
   ]
 })
 export class QuizModule { }

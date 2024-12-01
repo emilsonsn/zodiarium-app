@@ -2,6 +2,7 @@ import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {QuizComponent} from "@app/views/public/quiz/quiz/quiz.component";
 import {GenderComponent} from "@app/views/public/quiz/gender/gender.component";
+import {BirthDateComponent} from "@app/views/public/quiz/birth-date/birth-date.component";
 
 const routes: Routes = [
   {
@@ -13,8 +14,12 @@ const routes: Routes = [
         component: GenderComponent
       },
       {
+        path: 'birth-date',
+        component: BirthDateComponent
+      },
+      {
         path: '**',
-        redirectTo: 'gender'
+        redirectTo: 'birth-date'
       }
     ]
   }

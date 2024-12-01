@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
-import {Router} from "@angular/router";
+import {NavigationEnd, Router} from "@angular/router";
+import {filter} from "rxjs";
 
 @Component({
   selector: 'app-quiz',
@@ -12,25 +13,25 @@ export class QuizComponent {
     {
       name: 'Nascimento',
       icon: "assets/images/telescope-svgrepo-com.svg",
-      url: 'birth-date',
+      url: '/quiz/birth-date',
       active: false
     },
     {
       name: "Seu Signo",
       icon: "assets/images/solar-system-svgrepo-com.svg",
-      url: 'sign',
+      url: '/quiz/sign',
       active: false
     },
     {
       name: "Cidade",
       icon: "assets/images/planet-earth-svgrepo-com.svg",
-      url: 'city',
+      url: '/quiz/city',
       active: false
     },
     {
       name: "Horário",
       icon: "assets/images/clock-svgrepo-com.svg",
-      url: 'age',
+      url: '/quiz/hour-of-the-day',
       active: false
     },
     {
@@ -42,7 +43,7 @@ export class QuizComponent {
     {
       name: "Enviar Horóscopo",
       icon: "assets/images/envelope-svgrepo-com.svg",
-      url: 'send',
+      url: '/quiz/send',
       active: false
     }
   ];
@@ -52,20 +53,35 @@ export class QuizComponent {
 
   ngOnInit(): void {
     this.updateSteps(this.router.url);
+    this.router.events.pipe(
+      filter(event => event instanceof NavigationEnd)
+    ).subscribe(() => {
+      this.updateSteps(this.router.url);
+    });
   }
 
   private updateSteps(currentUrl: string): void {
     this.steps.forEach(step => {
       step.active = (step.url === currentUrl);
     });
-
-    console.log(this.steps);
   }
 
   calculateProgress(): number {
     const activeStepIndex = this.steps.findIndex(step => step.active);
     const totalSteps = this.steps.length;
     return ((activeStepIndex + 1) / totalSteps) * 100;
+  }
+
+  disableBack(): boolean {
+    return !(this.router.url === '/quiz/birth-date');
+  }
+
+  back() {
+    const activeStepIndex = this.steps.findIndex(step => step.active);
+    if (activeStepIndex > 0) {
+      const previousStep = this.steps[activeStepIndex - 1];
+      this.router.navigate([previousStep.url]).then();
+    }
   }
 
 }

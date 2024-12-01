@@ -1,0 +1,56 @@
+<div class="birth-date-container">
+  <div class="birth-date-card">
+    <div class="birth-date-card-header">
+      <h3>Selecione a sua data de nascimento</h3>
+      <p>Selecione a data de nascimento para obter um plano personalizado</p>
+    </div>
+    <div class="lottie-container">
+      <ng-lottie
+        containerClass="moving-box"
+        *ngIf="options"
+        [options]="options">
+      </ng-lottie>
+    </div>
+
+    <div class="birth-date-inputs">
+      <!-- Mês -->
+      <div class="input-container">
+        <label for="month">Mês</label>
+        <select id="month" name="month" [(ngModel)]="selectedMonth" (change)="updateDays()">
+          <option value="01">Janeiro</option>
+          <option value="02">Fevereiro</option>
+          <option value="03">Março</option>
+          <option value="04">Abril</option>
+          <option value="05">Maio</option>
+          <option value="06">Junho</option>
+          <option value="07">Julho</option>
+          <option value="08">Agosto</option>
+          <option value="09">Setembro</option>
+          <option value="10">Outubro</option>
+          <option value="11">Novembro</option>
+          <option value="12">Dezembro</option>
+        </select>
+      </div>
+
+      <!-- Dia -->
+      <div class="input-container">
+        <label for="day">Dia</label>
+        <select id="day" name="day" [(ngModel)]="selectedDay">
+          <option *ngFor="let day of days" [value]="day">{{ day }}</option>
+        </select>
+      </div>
+
+      <!-- Ano -->
+      <div class="input-container">
+        <label for="year">Ano</label>
+        <select id="year" name="year" [(ngModel)]="selectedYear">
+          <option *ngFor="let year of years" [value]="year">{{ year }}</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="w-100 d-flex justify-content-center align-items-center">
+      <button class="button-birth-date" routerLink="/quiz/gender">Continuar</button>
+    </div>
+  </div>
+</div>

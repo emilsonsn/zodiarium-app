@@ -1,7 +1,7 @@
 <div class="quiz-container">
 
   <div class="quiz-form-progress">
-    <div class="quiz-form-header w-100">
+    <div class="quiz-form-header w-100" *ngIf="disableBack()" (click)="back()">
       <button matTooltip="Voltar" class="button-back" ><i class="fa-solid fa-chevron-left"></i></button>
     </div>
     <div class="quiz-form-progress-bar">
