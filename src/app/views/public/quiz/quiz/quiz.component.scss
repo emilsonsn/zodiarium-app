@@ -1,0 +1,115 @@
+@import "variables";
+
+:host {
+  flex: 1;
+  display: flex;
+}
+
+.quiz-form-header {
+  position: absolute;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+
+
+  .button-back {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 2.3rem;
+    height: 2.3rem;
+    min-width: 2.3rem;
+    min-height: 2.3rem;
+    border-radius: 5px;
+    background-color: $primary-color;
+    color: white;
+    font-size: larger;
+    cursor: pointer;
+    margin-right: 0.5rem;
+  }
+}
+
+// Tablets
+@media (min-width: $breakpoint-sm) and (max-width: $breakpoint-md - 1) {
+  .quiz-container {
+    padding: 2rem !important;
+    padding-top: 2rem !important;
+  }
+}
+
+// Smartphones grandes
+@media (min-width: $breakpoint-xs) and (max-width: $breakpoint-sm - 1) {
+  .quiz-container {
+    padding: 1rem !important;
+    padding-top: 2rem !important;
+  }
+}
+
+// Smartphones pequenos
+@media (max-width: $breakpoint-xs - 1) {
+  .quiz-container {
+    padding: 1rem !important;
+    padding-top: 2rem !important;
+  }
+}
+
+
+.quiz-container {
+  flex: 1;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 4rem;
+  padding-top: 2rem;
+  background: linear-gradient(rgb(255, 240, 240) 0%, rgb(255, 251, 251) 15%, rgb(255, 251, 251) 80%, rgb(255, 240, 240) 100%);
+
+
+  .quiz-form-progress {
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+
+    .quiz-form-progress-bar {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-bottom: 2rem;
+
+      .quiz-form-progress-icons {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        margin-right: 1rem;
+
+        .progress-icon {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          justify-content: center;
+          gap: 0.5rem;
+
+          img {
+            width: 40px;
+            opacity: 0.7;
+            z-index: 99;
+          }
+
+          .active-img {
+            cursor: pointer;
+            opacity: 1;
+          }
+        }
+      }
+    }
+
+
+  }
+}

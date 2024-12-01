@@ -8,9 +8,15 @@ import * as dayjs from 'dayjs';
 })
 export class CardCommentPublicComponent {
 
-  protected readonly dayjs = dayjs;
   @Input() username!: string;
   @Input() date!: Date;
   @Input() comment!: string;
   @Input() rating!: number;
+
+  public getDate(date: Date): string {
+    if (date) {
+      return dayjs(date.toString()).format('YYYY-MM-DD');
+    }
+    return '';
+  }
 }
