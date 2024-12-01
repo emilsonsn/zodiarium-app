@@ -55,10 +55,14 @@ export class LayoutPrivateComponent {
 
 
   ngOnInit(): void {
-
+    this._sessionQuery.user$.subscribe(user => {
+      this.user = user;
+    })
     document.getElementById('template').addEventListener('click', () => {
       this._sidebarService.retractSidebar();
     });
+
+
 
     // Escuta as mudanças nos queryParams diretamente
     this._activatedRoute.queryParams.subscribe(params => {
