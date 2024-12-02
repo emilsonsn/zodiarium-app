@@ -6,9 +6,11 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { PipesModule } from '@shared/pipes/pipes.module';
+import { TableProductComponent } from './table-product/table-product.component';
 
 const tables = [
-  TableClientComponent
+  TableClientComponent,
+  TableProductComponent
 ];
 
 @NgModule({

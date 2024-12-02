@@ -4,6 +4,7 @@ import {LayoutsModule} from "@shared/layouts/layouts.module";
 import {TablesModule} from "@shared/tables/tables.module";
 import {PipesModule} from "@shared/pipes/pipes.module";
 import {ComponentsModule} from "@shared/components/components.module";
+import { DialogsModule } from './dialogs/dialogs.module';
 
 
 @NgModule({
@@ -13,13 +14,15 @@ import {ComponentsModule} from "@shared/components/components.module";
     ComponentsModule,
     LayoutsModule,
     PipesModule,
-    TablesModule
+    TablesModule,
+    DialogsModule
   ],
   exports: [
     ComponentsModule,
     LayoutsModule,
     PipesModule,
-    TablesModule
+    TablesModule,
+    DialogsModule
   ]
 })
 export class SharedModule {

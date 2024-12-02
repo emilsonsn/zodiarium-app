@@ -22,6 +22,10 @@ export class ClientService {
     return this._http.get<ApiResponsePageable<Client>>(`${this.baseUrl}/search?${filterParams}`);
   }
 
+  export(status: string): Observable<any> {
+    return this._http.get(`${this.baseUrl}/export?status=${status}`, { responseType: 'blob' });
+  }
+
   // Get a funnel step by ID
   getById(id: string): Observable<any> {
     return this._http.get(`${this.baseUrl}/${id}`);
