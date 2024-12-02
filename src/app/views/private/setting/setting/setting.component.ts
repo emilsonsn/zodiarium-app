@@ -21,7 +21,88 @@ export class SettingComponent {
 
   public utils = Utils;
 
-  protected themes = Object.entries(SettingThemes)
+  protected themes = [
+      {
+          "description": "Tema 1",
+          "id": "001"
+      },
+      {
+          "description": "Tema 2",
+          "id": "002"
+      },
+      {
+          "description": "Tema 3",
+          "id": "003"
+      },
+      {
+          "description": "Tema 4",
+          "id": "004"
+      },
+      {
+          "description": "Tema 5",
+          "id": "005"
+      },
+      {
+          "description": "Tema 6",
+          "id": "006"
+      },
+      {
+          "description": "Tema 7",
+          "id": "007"
+      },
+      {
+          "description": "Tema 8",
+          "id": "008"
+      },
+      {
+          "description": "Tema 9",
+          "id": "009"
+      },
+      {
+          "description": "Tema 10",
+          "id": "010"
+      },
+      {
+          "description": "Tema 11",
+          "id": "011"
+      },
+      {
+          "description": "Tema 12",
+          "id": "012"
+      },
+      {
+          "description": "Tema 13",
+          "id": "013"
+      },
+      {
+          "description": "Tema 14",
+          "id": "014"
+      },
+      {
+          "description": "Tema 15",
+          "id": "015"
+      },
+      {
+          "description": "Tema 16",
+          "id": "016"
+      },
+      {
+          "description": "Tema 17",
+          "id": "017"
+      },
+      {
+          "description": "Tema 18",
+          "id": "018"
+      },
+      {
+          "description": "Tema 19",
+          "id": "019"
+      },
+      {
+          "description": "Tema 20",
+          "id": "020"
+      }
+  ];
 
   constructor(
     private readonly _fb: FormBuilder,

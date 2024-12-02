@@ -36,6 +36,12 @@ export class LayoutPrivateComponent {
       active: true
     },
     {
+      label: 'Produtos',
+      icon: 'fa-brands fa-product-hunt',
+      route: '/painel/product',
+      active: true
+    },
+    {
       label: 'Configurações',
       icon: 'fa-solid fa-gears',
       route: '/painel/setting'

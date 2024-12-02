@@ -28,7 +28,10 @@ export class SignComponent {
     this.zodiacService.data$.pipe(take(1)).subscribe((data) => {
       if (data) {
         this.zodiacService.getClientZodiacSign(data.day, data.month).subscribe((res) => {
-          this.data = res.data;
+          // O loading ficou muito legal, deixa o pessoal ver
+          setTimeout(() => {
+            this.data = res.data;
+          }, 2000);
         });
       } else {
         this.router.navigate(['/quiz/birth-date']).then();

@@ -60,7 +60,7 @@
           <mat-label>Tema</mat-label>
           <mat-select formControlName="theme" placeholder="Status">
             @for (theme of themes; track theme) {
-              <mat-option [value]="theme[0]">{{ theme[1] }}</mat-option>
+              <mat-option [value]="theme.id">{{ theme.description }}</mat-option>
             }
           </mat-select>
         </mat-form-field>

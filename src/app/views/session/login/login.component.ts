@@ -66,6 +66,6 @@ export class LoginComponent {
   }
 
   options: AnimationOptions = {
-    path: '/assets/json/login_animation.json',
+    path: '/assets/animation/Animation - 1732981606697.json',
   };
 }

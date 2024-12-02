@@ -8,10 +8,10 @@
           [options]="options">
         </ng-lottie>
       </div>
-      <img *ngIf="data" alt="" [src]="data?.zodiacSignDetail?.icone">
+      <img *ngIf="data" alt="" [src]="data?.zodiacSignDetail?.icon">
       <div class="sign-card-header" *ngIf="data">
         <h3 *ngIf="data?.zodiacSign">{{data?.zodiacSign}}</h3>
-        <p>{{data?.zodiacSignDetail?.descricao}}</p>
+        <p>{{data?.zodiacSignDetail?.short_description}}</p>
       </div>
     </div>
     <div class="w-100 d-flex justify-content-center align-items-center">

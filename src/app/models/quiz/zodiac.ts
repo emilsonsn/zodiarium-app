@@ -1,6 +1,7 @@
 export interface ZodiacSignDetail {
-  icone: string;
-  descricao: string;
+  icon: string;
+  short_description: string;
+  description: string;
 }
 
 export interface ZodiacSignData {
