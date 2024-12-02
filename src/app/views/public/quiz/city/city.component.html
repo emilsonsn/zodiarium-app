@@ -1,15 +1,37 @@
-<div class="birth-date-container">
-  <div class="birth-date-card">
-    <div class="birth-date-card-header">
-      <h3>titulo</h3>
-      <p>descrição</p>
+<div class="city-container">
+  <div class="city-card">
+    <div class="city-card-header">
+      <h3>Especifique o seu local de nascimento</h3>
+      <p>Utilizamos esta informação para determinar a posição e a influência dos planetas no seu mapa natal.</p>
     </div>
 
+    <mat-form-field style="width: 330px;">
+      <mat-label>Cidade</mat-label>
+      <input
+        type="text"
+        matInput
+        [(ngModel)]="searchTerm"
+        (input)="onSearch()"
+        [matAutocomplete]="auto"
+      />
+      <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+        <mat-option *ngFor="let city of (filteredCities$ | async)" [value]="city" (onSelectionChange)="onCitySelected(city)">
+          <ng-container *ngIf="city.name !== 'Carregando...'; else loading">
+            {{ city.name }}, {{ city.state }}, {{ city.country }}
+          </ng-container>
+          <ng-template #loading>
+            <em>Carregando...</em>
+          </ng-template>
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
 
-
-
-    <div class="w-100 d-flex justify-content-center align-items-center">
-      <button class="button-birth-date" routerLink="/quiz/hour-of-the-day">Continuar</button>
+    <div class="w-100 d-flex justify-content-center align-items-center mt-4">
+      <button class="button-city"
+              routerLink="/quiz/hour-of-the-day"
+              [disabled]="!selectedCity">
+        Continuar
+      </button>
     </div>
   </div>
 </div>

@@ -14,6 +14,11 @@ import { SignComponent } from './sign/sign.component';
 import { CityComponent } from './city/city.component';
 import { HourOfTheDayComponent } from './hour-of-the-day/hour-of-the-day.component';
 import { SendComponent } from './send/send.component';
+import {MatFormField, MatLabel} from "@angular/material/form-field";
+import {MatAutocomplete, MatAutocompleteTrigger, MatOption} from "@angular/material/autocomplete";
+import {MatInput} from "@angular/material/input";
+import {MatProgressSpinner} from "@angular/material/progress-spinner";
+import {MatSelect, MatSelectTrigger} from "@angular/material/select";
 
 
 @NgModule({
@@ -33,7 +38,16 @@ import { SendComponent } from './send/send.component';
     MatProgressBar,
     MatTooltip,
     MatIconButton,
-    FormsModule
+    FormsModule,
+    MatLabel,
+    MatFormField,
+    MatOption,
+    MatAutocomplete,
+    MatInput,
+    MatAutocompleteTrigger,
+    MatProgressSpinner,
+    MatSelectTrigger,
+    MatSelect
   ]
 })
 export class QuizModule { }
