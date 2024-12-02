@@ -14,7 +14,7 @@ export class SettingService {
 
   // Get a list of funnels steps with optional query parameters
   search(params?: any): Observable<any> {
-    return this._http.get(`${this.baseUrl}/search`);
+    return this._http.get(`${this.baseUrl}/`);
   }
 
 

@@ -35,26 +35,26 @@ export class HomeComponent {
   ];
   itemBenefiting: { title: string, description: string }[] = [
     {
-      title: "20 milhões",
+      title: "200 mil",
       description: "utilizadores satisfeitos"
     },
     {
-      title: "93% de precisão",
+      title: "94% de precisão",
       description: "avaliado por utilizadores reais"
     },
     {
-      title: "4.7/5 estrelas",
+      title: "4.8/5 estrelas",
       description: "pontuação de satisfação"
     },
     {
-      title: "300+ consultores",
+      title: "80+ consultores",
       description: "rigorosamente testados"
     },
   ];
 
   itemComment: { username: string, date: Date, comment: string, rating: number }[] = [
     {
-      username: "joaquim_silva07",
+      username: "beatrizvieira_oficial",
       date: new Date(),
       comment: "O Zodarium me ajudou a entender melhor o meu relacionamento e a minha personalidade. Recomendo muito!",
       rating: 5
@@ -66,15 +66,15 @@ export class HomeComponent {
       rating: 4
     },
     {
-      username: "carlos_almeida22",
+      username: "_sandrasouzza",
       date: new Date(),
       comment: "Fantástico! Nunca pensei que fosse aprender tanto sobre mim mesmo. Merece cinco estrelas!",
       rating: 5
     },
     {
-      username: "maria_sousa93",
+      username: "mariana_pv",
       date: new Date(),
-      comment: "Boa experiência, mas penso que algumas funcionalidades ainda estão um pouco confusas.",
+      comment: "Funciona! O relatório acertou tudo que aconteceu comigo! Até as coisas ruins...",
       rating: 4
     }
   ];

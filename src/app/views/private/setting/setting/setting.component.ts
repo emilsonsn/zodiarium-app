@@ -47,10 +47,8 @@ export class SettingComponent {
 
     this._initOrStopLoading();
     this._settingService.search().pipe(finalize(() => this._initOrStopLoading())).subscribe(res => {
-      if (res.status) {
-        this.form.patchValue(res.data);
-        this.profileImage = res.data.logo;
-      }
+        this.form.patchValue(res);
+        this.profileImage = res.logo;
     })
   }
 
