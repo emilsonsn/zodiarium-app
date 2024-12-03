@@ -3,16 +3,16 @@ import {HttpClient, HttpParams} from "@angular/common/http";
 import {BehaviorSubject, Observable} from "rxjs";
 import {environment} from "@env/environment";
 import {ApiResponse} from "@models/application";
-import {ZodiacSignData} from "@models/quiz/zodiac";
+import {ZodiacData, ZodiacSignData} from "@models/quiz/zodiac";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ZodiacService {
-  private dataSubject = new BehaviorSubject<any>(null);
-  public data$ = this.dataSubject.asObservable();
+  private dataSubject = new BehaviorSubject<ZodiacData>(null);
+  public data$: Observable<ZodiacData> = this.dataSubject.asObservable();
 
-  sendData(data: any) {
+  sendData(data: ZodiacData) {
     this.dataSubject.next(data);
   }
 

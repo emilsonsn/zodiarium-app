@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {AnimationOptions} from "ngx-lottie";
 import {ZodiacService} from "@services/quiz/zodiac.service";
+import {take} from "rxjs/operators";
 
 @Component({
   selector: 'app-birth-date',
@@ -42,10 +43,13 @@ export class BirthDateComponent {
   }
 
   saveDate() {
-    this.zodiacService.sendData({
-      day: this.selectedDay,
-      month: this.selectedMonth,
-      year: this.selectedYear
+    this.zodiacService.data$.pipe(take(1)).subscribe((data) => {
+      this.zodiacService.sendData({
+        ...data,
+        day: this.selectedDay.toString(),
+        month: this.selectedMonth,
+        year: this.selectedYear.toString(),
+      });
     });
   }
 }

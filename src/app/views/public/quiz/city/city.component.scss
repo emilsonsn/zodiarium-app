@@ -1,5 +1,31 @@
 @import "variables";
 
+// Tablets
+@media (min-width: $breakpoint-sm) and (max-width: $breakpoint-md - 1) {
+  .lottie-container {
+    max-width: 200px !important;
+  }
+}
+
+// Smartphones grandes
+@media (min-width: $breakpoint-xs) and (max-width: $breakpoint-sm - 1) {
+  .lottie-container {
+    max-width: 200px !important;
+  }
+}
+
+// Smartphones pequenos
+@media (max-width: $breakpoint-xs - 1) {
+  .lottie-container {
+    max-width: 200px !important;
+  }
+}
+
+
+.lottie-container {
+  max-width: 300px;
+}
+
 .city-card-header {
   display: flex;
   flex-direction: column;
@@ -27,8 +53,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 2rem;
-  padding-top: 0;
   gap: 1rem;
 
   .city-card {
