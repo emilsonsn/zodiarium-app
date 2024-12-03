@@ -28,8 +28,6 @@ export class HourOfTheDayComponent {
       }
     });
 
-    console.log(this.selectedTime);
-
   }
 
   timeChanged(hour: string) {

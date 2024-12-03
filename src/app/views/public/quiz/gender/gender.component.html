@@ -9,7 +9,7 @@
       *ngIf="optionsMale"
       [options]="optionsMale">
     </ng-lottie>
-    <button class="button-gender">Masculino</button>
+    <button class="button-gender" (click)="selectGender('male')">Masculino</button>
   </div>
 
   <div class="gender-card">
@@ -18,6 +18,6 @@
       *ngIf="optionsFemale"
       [options]="optionsFemale">
     </ng-lottie>
-    <button class="button-gender bnt-female">Feminino</button>
+    <button class="button-gender bnt-female" (click)="selectGender('female')">Feminino</button>
   </div>
 </div>

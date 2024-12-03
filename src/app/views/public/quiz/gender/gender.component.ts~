@@ -1,9 +1,6 @@
 import {Component} from '@angular/core';
 import {Gender} from "@models/quiz/gender";
 import {AnimationOptions} from "ngx-lottie";
-import {ZodiacService} from "@services/quiz/zodiac.service";
-import {Router} from "@angular/router";
-import {take} from "rxjs/operators";
 
 @Component({
   selector: 'app-gender',
@@ -14,17 +11,6 @@ export class GenderComponent {
 
   optionsMale: AnimationOptions | null = null;
   optionsFemale: AnimationOptions | null = null;
-
-  constructor(
-    private readonly zodiacService: ZodiacService,
-    private readonly router: Router
-  ) {
-    this.zodiacService.data$.pipe(take(1)).subscribe((data) => {
-      if (data == null) {
-        this.router.navigate(['/quiz/birth-date']).then();
-      }
-    });
-  }
 
   ngOnInit(): void {
     this.optionsMale = this.getRandomAnimation(Gender.Male);
@@ -53,16 +39,4 @@ export class GenderComponent {
   };
 
   protected readonly Gender = Gender;
-
-  selectGender(male: string) {
-    this.zodiacService.data$.pipe(take(1)).subscribe((data) => {
-      this.zodiacService.sendData({
-        ...data,
-        sex: male
-      });
-    });
-
-    this.router.navigate(['/quiz/send']).then();
-
-  }
 }
