@@ -10,7 +10,7 @@ import { TableProductComponent } from './table-product/table-product.component';
 
 const tables = [
   TableClientComponent,
-  TableProductComponent
+  TableProductComponent,
 ];
 
 @NgModule({
