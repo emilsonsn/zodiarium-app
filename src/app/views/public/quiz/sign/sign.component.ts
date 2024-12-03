@@ -31,8 +31,7 @@ export class SignComponent {
         if (data.zodiacSign) {
           this.data = data.zodiacSign;
         } else {
-          this.zodiacService.getClientZodiacSign(data.day, data.month).subscribe((res) => {
-            // O loading ficou muito legal, deixa o pessoal ver
+          this.zodiacService.getClientZodiacSign(data.day_birth, data.month_birth).subscribe((res) => {
             setTimeout(() => {
               this.data = res.data;
 

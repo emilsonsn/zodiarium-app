@@ -26,8 +26,22 @@ export class SendComponent {
   formData = {
     name: '',
     email: '',
+    ddi: '',
     phone: ''
   };
+
+  ddiList = [
+    { name: 'Portugal', code: '+351' },
+    { name: 'Brasil', code: '+55' },
+    { name: 'Espanha', code: '+34' },
+    { name: 'Estados Unidos', code: '+1' },
+    { name: 'Argentina', code: '+54' },
+    { name: 'França', code: '+33' },
+    { name: 'Reino Unido', code: '+44' },
+    { name: 'Alemanha', code: '+49' },
+    { name: 'Itália', code: '+39' }
+  ];
+
 
   onSubmit() {
     console.log('Dados do formulário:', this.formData);

@@ -1,12 +1,17 @@
 
-<p>nome: {{data.name}}</p>
-<p>email: {{data.email}}</p>
 
-<p>phone: {{data.phone}}</p>
-<p>sexo: {{data.sex}}</p>
-
-<p>data nascimento: {{data.day}}/{{data.month}}/{{data.year}}</p>
-
-<p>hora de nascimento: {{data.birth_hour}}</p>
-
-<p>address: {{displayFn(data.address)}}</p>
+<div class="report-container" >
+    <div class="loading" *ngIf="!clientDetails">
+        <img src="https://cdn.dribbble.com/users/1053052/screenshots/3600670/_____.gif" alt="">
+    </div>
+    <div class="zodiac-icon">
+      <img [src]="clientDetails.zodiacSignDetail.icon" alt="Ícone do signo" />
+    </div>
+    <h2 class="zodiac-name">{{ data.name }}</h2>
+    <div class="zodiac-chart">
+      <img [src]="clientDetails.singChartBs4" alt="Gráfico do signo" />
+    </div>
+    <p class="zodiac-description">{{ clientDetails.zodiacSignDetail.description }}</p>
+    <button class="btn-report" (click)="viewFullReport()">Ver Relatório Completo</button>
+</div>
+  

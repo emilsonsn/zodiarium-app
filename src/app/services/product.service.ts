@@ -23,6 +23,10 @@ export class ProductService {
     return this._http.get<ApiResponsePageable<Product>>(`${this.baseUrl}/search?${paginate}${filterParams}`);
   }
 
+  show(): Observable<ApiResponsePageable<Product>> {
+    return this._http.get<ApiResponsePageable<Product>>(`${this.baseUrl}/show`);
+  }
+
   create(data: Product): Observable<ApiResponse<Product>> {
     return this._http.post<ApiResponse<Product>>(`${this.baseUrl}/create`, data);
   }

@@ -46,9 +46,9 @@ export class BirthDateComponent {
     this.zodiacService.data$.pipe(take(1)).subscribe((data) => {
       this.zodiacService.sendData({
         ...data,
-        day: this.selectedDay.toString(),
-        month: this.selectedMonth,
-        year: this.selectedYear.toString(),
+        day_birth: this.selectedDay.toString(),
+        month_birth: this.selectedMonth,
+        year_birth: this.selectedYear.toString(),
       });
     });
   }

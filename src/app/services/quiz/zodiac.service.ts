@@ -26,7 +26,7 @@ export class ZodiacService {
     return this.http.get(`${this.baseUrl}/search`, {params: httpParams});
   }
 
-  getClientZodiacSign(day_birth: string, month_birth: string): Observable<ApiResponse<ZodiacSignData>> {
+  getClientZodiacSign(day_birth: string|number, month_birth: string|number): Observable<ApiResponse<ZodiacSignData>> {
     const httpParams = new HttpParams()
       .set('day_birth', day_birth)
       .set('month_birth', month_birth);

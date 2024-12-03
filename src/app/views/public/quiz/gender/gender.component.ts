@@ -44,9 +44,8 @@ export class GenderComponent {
   getRandomAnimation(gender: Gender): AnimationOptions {
     const animations = gender === Gender.Male ? this.male : this.female;
     const randomIndex = Math.floor(Math.random() * animations.length);
-    return { path: animations[randomIndex] }; // Retorna no formato AnimationOptions
+    return { path: animations[randomIndex] };
   }
-
 
   options: AnimationOptions = {
     path: '/assets/animation/male1.json',
@@ -58,7 +57,7 @@ export class GenderComponent {
     this.zodiacService.data$.pipe(take(1)).subscribe((data) => {
       this.zodiacService.sendData({
         ...data,
-        sex: male
+        gender: male
       });
     });
 

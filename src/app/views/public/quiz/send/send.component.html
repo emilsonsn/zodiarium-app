@@ -1,7 +1,7 @@
 <div class="send-container">
   <div class="send-card">
     <div class="send-card-header">
-      <h3>Precisamos do seu endereço de email para lhe enviar horóscopos e leituras.</h3>
+      <h3>Informe seu email e telefone para receber seu relatório completo.</h3>
     </div>
 
     <div class="send-card-body">
@@ -17,9 +17,18 @@
         </mat-form-field>
 
         <mat-form-field class="w-100">
+          <mat-label>DDI</mat-label>
+          <mat-select [(ngModel)]="formData.ddi" name="ddi" id="ddi">
+            <mat-option *ngFor="let ddi of ddiList" [value]="ddi.code">
+              {{ ddi.name }} ({{ ddi.code }})
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field class="w-100">
           <mat-label>Telefone</mat-label>
-          <input type="text" matInput [(ngModel)]="formData.phone" name="phone" id="phone" [mask]="'(00) 000 000 0000'"
-                 placeholder="(xx) xxx xxxx xxxx" />
+          <input type="text" matInput [(ngModel)]="formData.phone" name="phone" id="phone" [mask]="'(00) 000 0000'"
+                 placeholder="(xx) xxx xxxx" />
         </mat-form-field>
 
         <div class="w-100 d-flex justify-content-center align-items-center">

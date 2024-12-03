@@ -1,0 +1,50 @@
+<div class="content-sale">
+
+    <h1 class="citation">
+        "Conhece-te a ti mesmo e conhecerás o universo e os deuses." – Sócrates
+    </h1>
+    
+    <div *ngIf="mainProduct" class="main-product">
+        <div class="product-card">
+          <img [src]="mainProduct.image" alt="{{ mainProduct.title }}" class="product-image" />
+          <div class="product-details">
+            <h2>{{ mainProduct.title }}</h2>
+            <p>
+                Descubra os segredos do seu destino com o nosso relatório Personalizado! <br>
+                Você sabia que sua data, hora e local de nascimento revelam detalhes incríveis sobre sua personalidade, desafios e oportunidades na vida? <br>            
+            </p>
+            <div class="d-flex justify-content-end">
+                <button class="buy-button pulsating">Comprar por € {{ mainProduct.amount }}</button>
+            </div>
+          </div>
+        </div>
+    </div>
+      
+      <div *ngIf="bundle" class="bundle-section">
+        <div class="bundle-card">
+            <div class="promotion">
+                <h3 class="text-center">Oferta Especial</h3>
+                <p>Inclui o {{ mainProduct.title }} e mais {{ bundle.count }} produtos por apenas € {{ bundle.sum }}!</p>
+            </div>
+            <div class="bundle-products">
+                <div *ngFor="let product of bundle.reports" class="bundle-product">
+                <img [src]="product.image" alt="{{ product.title }}" class="bundle-image" />
+                <p>{{ product.title }}</p>
+                </div>
+            </div>
+            <button class="buy-button pulsating">Comprar Oferta por € {{ bundle.sum }}</button>
+            </div>
+      </div>
+      
+      <div *ngIf="upsellProducts.length > 0" class="upsell-section">
+        <h3>Outras pessoas também compraram</h3>
+        <div *ngFor="let product of upsellProducts" class="upsell-card">
+          <img [src]="product.image" alt="{{ product.title }}" class="upsell-image" />
+          <div class="upsell-details">
+            <h3>{{ product.title }}</h3>
+            <p>Melhore sua experiência com este complemento incrível!</p>
+            <button class="buy-button pulsating">Comprar por € {{ product.amount }}</button>
+          </div>
+        </div>
+      </div>    
+</div>

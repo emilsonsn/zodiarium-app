@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ApiResponsePageable, PageControl } from '@models/application';
+import { ApiResponse, ApiResponsePageable, PageControl } from '@models/application';
 import { Client } from '@models/client';
+import { ZodiacData } from '@models/quiz/zodiac';
 import { Utils } from '@shared/utils';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
@@ -20,6 +21,10 @@ export class ClientService {
     if(filters) filterParams = Utils.mountPageControl(filters);
 
     return this._http.get<ApiResponsePageable<Client>>(`${this.baseUrl}/search?${filterParams}`);
+  }
+
+  create(client: Client|ZodiacData): Observable<ApiResponse<Client>> {
+    return this._http.post<ApiResponse<Client>>(`${this.baseUrl}/create`, client);
   }
 
   export(status: string): Observable<any> {

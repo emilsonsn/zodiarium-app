@@ -1,0 +1,134 @@
+.content-sale{
+    width: 95%;
+    margin: 0 auto;
+    max-width: 800px;
+
+    & > div{
+        margin-bottom: 50px;
+    }
+
+
+    .citation {
+        font-family: 'Georgia', serif;
+        font-style: italic;
+        text-align: center;
+        margin: 20px auto;
+        padding: 20px;
+        border-left: 5px solid #6c757d;
+        color: #575757;
+        background-color: #e7e7e7;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+        line-height: 1.6;
+        margin-bottom: 20px;
+    }
+    
+    .citation::before {
+        content: "“";
+        font-size: 3rem;
+        color: #6c757d;
+        position: relative;
+        top: -10px;
+        left: -5px;
+    }
+    
+    .citation::after {
+        content: "”";
+        font-size: 3rem;
+        color: #6c757d;
+        position: relative;
+        top: 10px;
+        right: -5px;
+    }
+    
+    
+    .main-product{
+        img{
+            width: 100%;
+            max-width: 300px;
+            height: auto;
+            margin: 0 auto;
+        }
+
+        h2{
+            color: #202260;
+        }
+    }
+
+    .bundle-card{
+        display: flex;
+        flex-direction: column;
+
+        .promotion {
+            width: 100%;
+            h3{
+                background-color: green;
+                width: 100%;
+                font-weight: 600;
+                color: rgb(255, 255, 255);
+                border-radius: 10px;
+            }
+        }
+
+        .bundle-products{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            flex-direction: row;
+            width: 100%;
+
+            .bundle-product{
+                max-width: 150px;
+                margin-right: 5px;
+            }
+        }
+    }
+    
+    .product-card, .bundle-card, .upsell-card {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        background: #f8f8f8;
+        padding: 1rem;
+        margin: 1rem 0;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+      
+      .product-image, .bundle-image, .upsell-image {
+        width: 100px;
+        height: 100px;
+        border-radius: 10px;
+        object-fit: cover;
+      }
+      
+      .product-details, .upsell-details {
+        flex: 1;
+        padding: 20px 0 0 20px;
+      }
+      
+      .buy-button {
+        background-color: #ff5722;
+        color: white;
+        padding: 0.5rem 1rem;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      
+      .pulsating {
+        animation: pulse 1s infinite;
+      }
+      
+      @keyframes pulse {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.05);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }    
+}
