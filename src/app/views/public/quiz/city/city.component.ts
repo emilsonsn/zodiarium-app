@@ -44,7 +44,7 @@ export class CityComponent implements OnInit {
         this.selectedCity = data.address;
         this.searchTerm = this.displayFn(data.address);
       } else if (data == null) {
-        // this.router.navigate(['/quiz/birth-date']).then();
+        this.router.navigate(['/quiz/birth-date']).then();
       }
     });
 

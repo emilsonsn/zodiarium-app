@@ -1,15 +1,29 @@
-<div class="birth-date-container">
-  <div class="birth-date-card">
-    <div class="birth-date-card-header">
-      <h3>titulo</h3>
-      <p>descrição</p>
+<div class="hour-of-the-day-container">
+  <div class="hour-of-the-day-card">
+    <div class="hour-of-the-day-card-header">
+      <h3>Introduza a sua hora de nascimento</h3>
+      <p>É importante para definir o ascendente, as casas e a posição da Lua no seu mapa natal</p>
+    </div>
+    <div class="lottie-container">
+      <ng-lottie
+        containerClass="moving-box"
+        *ngIf="options"
+        [options]="options">
+      </ng-lottie>
+    </div>
+
+    <div class="hour-of-the-day-card-body">
+      <input [ngxMatTimepicker]="timepicker" [(ngModel)]="selectedTime" (ngModelChange)="timeChanged($event)" [placeholder]="'hh:mm'">
+      <ngx-mat-timepicker #timepicker></ngx-mat-timepicker>
     </div>
 
 
-
+    <div class="w-100 text-center" style="color: #666;">
+      <p>*Se não souber a hora exata de nascimento, não há problema, ainda assim encontrará muitos bons insights sem saber a sua hora exata de nascimento.</p>
+    </div>
 
     <div class="w-100 d-flex justify-content-center align-items-center">
-      <button class="button-birth-date" routerLink="/quiz/gender">Continuar</button>
+      <button class="button-hour-of-the-day" routerLink="/quiz/gender">Continuar</button>
     </div>
   </div>
 </div>
