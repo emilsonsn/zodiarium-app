@@ -1,20 +1,19 @@
 <div class="send-container">
   <div class="send-card">
     <div class="send-card-header">
-      <h3>Título</h3>
-      <p>Descrição</p>
+      <h3>Precisamos do seu endereço de email para lhe enviar horóscopos e leituras.</h3>
     </div>
 
     <div class="send-card-body">
       <form (ngSubmit)="onSubmit()">
         <mat-form-field class="w-100">
           <mat-label>Nome</mat-label>
-          <input matInput [(ngModel)]="formData.name" name="name" id="name" placeholder="Insira seu nome" />
+          <input matInput [(ngModel)]="formData.name" name="name" id="name" placeholder="Insira o seu nome" />
         </mat-form-field>
 
         <mat-form-field class="w-100">
           <mat-label>Email</mat-label>
-          <input matInput [(ngModel)]="formData.email" name="email" id="email" type="email" placeholder="Insira seu email" />
+          <input matInput [(ngModel)]="formData.email" name="email" id="email" type="email" placeholder="Insira o seu email" />
         </mat-form-field>
 
         <mat-form-field class="w-100">
