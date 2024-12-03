@@ -16,9 +16,30 @@ export class SendComponent {
   ) {
 
     this.zodiacService.data$.pipe(take(1)).subscribe((data) => {
-      console.log('Received data from child:', data);
+      if (data == null) {
+        this.router.navigate(['/quiz/birth-date']).then();
+      }
     });
 
+  }
+
+  formData = {
+    name: '',
+    email: '',
+    phone: ''
+  };
+
+  onSubmit() {
+    console.log('Dados do formulário:', this.formData);
+
+    this.zodiacService.data$.pipe(take(1)).subscribe((data) => {
+      this.zodiacService.sendData({
+        ...data,
+        ...this.formData
+      });
+    });
+
+    this.router.navigate(['/report']).then();
   }
 
 }

@@ -1,15 +1,32 @@
-<div class="birth-date-container">
-  <div class="birth-date-card">
-    <div class="birth-date-card-header">
-      <h3>titulo</h3>
-      <p>descrição</p>
+<div class="send-container">
+  <div class="send-card">
+    <div class="send-card-header">
+      <h3>Título</h3>
+      <p>Descrição</p>
     </div>
 
+    <div class="send-card-body">
+      <form (ngSubmit)="onSubmit()">
+        <mat-form-field class="w-100">
+          <mat-label>Nome</mat-label>
+          <input matInput [(ngModel)]="formData.name" name="name" id="name" placeholder="Insira seu nome" />
+        </mat-form-field>
 
+        <mat-form-field class="w-100">
+          <mat-label>Email</mat-label>
+          <input matInput [(ngModel)]="formData.email" name="email" id="email" type="email" placeholder="Insira seu email" />
+        </mat-form-field>
 
+        <mat-form-field class="w-100">
+          <mat-label>Telefone</mat-label>
+          <input type="text" matInput [(ngModel)]="formData.phone" name="phone" id="phone" [mask]="'(00) 000 000 0000'"
+                 placeholder="(xx) xxx xxxx xxxx" />
+        </mat-form-field>
 
-    <div class="w-100 d-flex justify-content-center align-items-center">
-      <button class="button-birth-date" routerLink="/quiz/city">Continuar</button>
+        <div class="w-100 d-flex justify-content-center align-items-center">
+          <button class="button-send" type="submit">Abrir Horóscopo</button>
+        </div>
+      </form>
     </div>
   </div>
 </div>
