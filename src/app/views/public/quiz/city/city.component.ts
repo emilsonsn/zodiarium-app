@@ -52,39 +52,41 @@ export class CityComponent implements OnInit {
   }
 
   private loadAllCities(): void {
-    const allCountries = Country.getAllCountries();
-    let currentIndex = 0;
+    const portugal = Country.getCountryByCode('PT'); // Obtém o país Portugal pelo código ISO
+    if (!portugal) {
+      console.error('País Portugal não encontrado.');
+      return;
+    }
+  
+    const states = State.getStatesOfCountry(portugal.isoCode); // Obtém todos os estados de Portugal
     const batchSize = 1000; // Quantidade de cidades por lote
-
+    let currentIndex = 0;
+  
     const loadBatch = () => {
       const batch: any[] = [];
-      while (batch.length < batchSize && currentIndex < allCountries.length) {
-        const country = allCountries[currentIndex];
-        const states = State.getStatesOfCountry(country.isoCode);
-        states.forEach((state) => {
-          const stateCities = City.getCitiesOfState(country.isoCode, state.isoCode);
-          batch.push(
-            ...stateCities.map((city) => ({
-              name: city.name,
-              state: state.name,
-              country: country.name,
-            }))
-          );
-        });
+      while (batch.length < batchSize && currentIndex < states.length) {
+        const state = states[currentIndex];
+        const stateCities = City.getCitiesOfState(portugal.isoCode, state.isoCode); // Obtém cidades do estado atual
+        batch.push(
+          ...stateCities.map((city) => ({
+            name: city.name,
+            state: state.name,
+            country: portugal.name,
+          }))
+        );
         currentIndex++;
       }
-
+  
       this.allCities.push(...batch);
-      if (currentIndex < allCountries.length) {
+      if (currentIndex < states.length) {
         setTimeout(loadBatch, 0); // Permite a execução do próximo lote
       } else {
         this.loading = false;
       }
     };
-
+  
     loadBatch();
-  }
-
+  }  
 
   private filterCities(term: string): any[] {
     if (!term || term.length < 3) {
