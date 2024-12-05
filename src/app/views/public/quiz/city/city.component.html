@@ -1,0 +1,52 @@
+<div class="city-container">
+  <div class="city-card">
+
+    <!-- Verificação de loading -->
+    <ng-container *ngIf="!loading">
+      <div class="city-card-header">
+        <h3>Especifique o seu local de nascimento</h3>
+        <p>Utilizamos esta informação para determinar a posição e a influência dos planetas no seu mapa natal.</p>
+      </div>
+
+      <!-- Campo de Autocomplete -->
+      <mat-form-field style="width: 330px;">
+        <mat-label>Cidade</mat-label>
+        <input
+          type="text"
+          matInput
+          [value]="searchTerm"
+          (input)="onSearch($event)"
+          [matAutocomplete]="auto"
+        />
+        <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+          <mat-option
+            *ngFor="let city of (filteredCities$ | async)"
+            [value]="city"
+            (onSelectionChange)="onCitySelected(city)">
+            {{ city.name }}, {{ city.state }}, {{ city.country }}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </ng-container>
+
+    <!-- Animação de loading -->
+    <div class="lottie-container">
+      <ng-lottie
+        containerClass="moving-box"
+        *ngIf="options && loading"
+        [options]="options">
+      </ng-lottie>
+    </div>
+
+    <!-- Botão "Continuar" -->
+    <div class="w-100 d-flex justify-content-center align-items-center mt-4">
+      <button
+        class="button-city"
+        routerLink="/quiz/hour-of-the-day"
+        [disabled]="!selectedCity">
+        Continuar
+      </button>
+    </div>
+
+  </div>
+</div>

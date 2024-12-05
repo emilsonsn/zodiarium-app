@@ -1,0 +1,21 @@
+<div class="sign-container">
+  <div class="sign-card">
+    <div class="sign-card-body">
+      <div class="lottie-container">
+        <ng-lottie
+          containerClass="moving-box"
+          *ngIf="options && !data?.zodiacSign"
+          [options]="options">
+        </ng-lottie>
+      </div>
+      <img *ngIf="data" alt="" [src]="data?.zodiacSignDetail?.icon">
+      <div class="sign-card-header" *ngIf="data">
+        <h3 *ngIf="data?.zodiacSign">{{data?.zodiacSign}}</h3>
+        <p>{{data?.zodiacSignDetail?.short_description}}</p>
+      </div>
+    </div>
+    <div class="w-100 d-flex justify-content-center align-items-center">
+      <button class="button-sign" routerLink="/quiz/city" [disabled]="!data?.zodiacSign">Continuar</button>
+    </div>
+  </div>
+</div>

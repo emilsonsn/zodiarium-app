@@ -1,0 +1,21 @@
+<div class="quiz-container">
+
+  <div class="quiz-form-progress">
+    <div class="quiz-form-header w-100" *ngIf="disableBack()" (click)="back()">
+      <button matTooltip="Voltar" class="button-back" ><i class="fa-solid fa-chevron-left"></i></button>
+    </div>
+    <div class="quiz-form-progress-bar">
+      <div class="quiz-form-progress-icons">
+        @for (item of steps; track item) {
+          <div class="progress-icon">
+            <img [ngClass]="item.active ? 'active-img' : ''" matTooltip="{{item.name}}" alt="" [src]="item.icon"/>
+          </div>
+        }
+      </div>
+      <mat-progress-bar
+        mode="determinate"
+        [value]="calculateProgress()"/>
+    </div>
+  </div>
+  <router-outlet></router-outlet>
+</div>

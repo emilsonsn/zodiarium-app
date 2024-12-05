@@ -7,6 +7,8 @@ import {AvatarModule} from "@shared/components/avatar/avatar.module";
 import { StarRatingComponent } from './star-rating/star-rating.component';
 import {MatIcon} from "@angular/material/icon";
 import {MatCard} from "@angular/material/card";
+import { LottieComponent } from 'ngx-lottie';
+import { AccountManagerComponent } from './account-manager/account-manager.component';
 
 
 @NgModule({
@@ -15,17 +17,20 @@ import {MatCard} from "@angular/material/card";
     CardBenefitingPublicComponent,
     CardCommentPublicComponent,
     StarRatingComponent,
+    AccountManagerComponent,
   ],
   exports: [
     CardGuiaPublicComponent,
     CardBenefitingPublicComponent,
-    CardCommentPublicComponent
+    CardCommentPublicComponent,
+    AccountManagerComponent,
   ],
   imports: [
     CommonModule,
     AvatarModule,
     MatIcon,
     MatCard,
+    LottieComponent
   ]
 })
 export class ComponentsModule {

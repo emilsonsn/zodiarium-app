@@ -4,7 +4,7 @@
       <app-avatar [imageUrl]="'imageUrl'" [altText]="username" [hidden]="true"></app-avatar>
       <div class="info-user">
         <h4>{{'@' + username}}</h4>
-        <p>{{dayjs(date).format('YYYY-MM-DD')}}</p>
+        <p>{{ getDate(date)}}</p>
       </div>
     </div>
     <app-star-rating [rating]="rating"></app-star-rating>

@@ -1,0 +1,17 @@
+
+
+<div class="report-container" >
+    <div class="loading" *ngIf="!clientDetails">
+        <img src="https://cdn.dribbble.com/users/1053052/screenshots/3600670/_____.gif" alt="">
+    </div>
+    <div class="zodiac-icon">
+      <img [src]="clientDetails.zodiacSignDetail.icon" alt="Ícone do signo" />
+    </div>
+    <h2 class="zodiac-name">{{ data.name }}</h2>
+    <div class="zodiac-chart">
+      <img [src]="clientDetails.singChartBs4" alt="Gráfico do signo" />
+    </div>
+    <p class="zodiac-description">{{ clientDetails.zodiacSignDetail.description }}</p>
+    <button class="btn-report" (click)="viewFullReport()">Ver Relatório Completo</button>
+</div>
+  

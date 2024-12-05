@@ -1,0 +1,71 @@
+.loading {
+    height: 100%;
+    width: 100%;
+    
+    flex-direction: column;    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #1c273a;
+
+    h1{
+        text-align: center;
+        color: white;
+    }
+
+    img{
+        width: 80%;
+        max-width: 500px;
+        animation: spin 0s linear infinite;
+    }
+  }
+  
+
+.report-container {
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .zodiac-icon img {
+    width: 100px;
+    height: 100px;
+  }
+  
+  .zodiac-name {
+    font-size: 1.5rem;
+    margin: 10px 0;
+  }
+  
+  .zodiac-chart img {
+    width: 95%;
+    max-width: 400px;
+    height: auto;
+    margin: 15px 0;
+  }
+  
+  .zodiac-description {
+    font-size: 1rem;
+    margin: 15px 0;
+    color: #666;
+  }
+  
+  .btn-report {
+    background-color: #ff9900;
+    color: #fff;
+    font-size: 1rem;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    animation: blink 1s infinite;
+  }
+  
+  @keyframes blink {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.5;
+    }
+  }
+  

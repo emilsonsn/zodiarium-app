@@ -5,6 +5,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import player from 'lottie-web';
 import {provideLottieOptions} from "ngx-lottie";
+import { ToastrModule } from 'ngx-toastr';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserstateInterceptor } from './interceptors/browserstate.interceptor';
+import { AuthInterceptorService } from '@services/auth-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -12,13 +17,28 @@ import {provideLottieOptions} from "ngx-lottie";
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    BrowserAnimationsModule,
+    AppRoutingModule,
+    HttpClientModule,
+    ToastrModule.forRoot({
+      positionClass: 'toast-top-right',
+    }),
   ],
   providers: [
     provideClientHydration(),
     provideLottieOptions({
       player: () => player,
     }),
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptorService,
+      multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: BrowserstateInterceptor,
+      multi: true,
+    },
   ],
   bootstrap: [AppComponent]
 })

@@ -1,0 +1,103 @@
+@import "variables";
+
+// Tablets
+@media (min-width: $breakpoint-sm) and (max-width: $breakpoint-md - 1) {
+  .lottie-container {
+    max-width: 200px !important;
+  }
+}
+
+// Smartphones grandes
+@media (min-width: $breakpoint-xs) and (max-width: $breakpoint-sm - 1) {
+  .lottie-container {
+    max-width: 200px !important;
+  }
+}
+
+// Smartphones pequenos
+@media (max-width: $breakpoint-xs - 1) {
+  .lottie-container {
+    max-width: 200px !important;
+  }
+}
+
+
+.lottie-container {
+  max-width: 300px;
+}
+
+.city-card-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+  text-align: center;
+
+  h3 {
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: #333;
+    margin: 0;
+  }
+
+  p {
+    font-size: 1rem;
+    color: #666;
+    margin: 0;
+  }
+}
+
+.city-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+
+  .city-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.5rem;
+    gap: 1rem;
+
+    button {
+      z-index: 2;
+      display: inline-flex;
+      -webkit-box-align: center;
+      align-items: center;
+      align-self: center;
+      -webkit-box-pack: center;
+      justify-content: center;
+      width: 330px;
+      max-width: 100%;
+      height: 40px;
+      padding: 5px 10px;
+      border: none;
+      border-radius: 12px;
+      text-align: center;
+      text-decoration: none;
+      vertical-align: middle;
+      color: rgb(251, 251, 255);
+      background: linear-gradient(165.54deg, rgb(20, 19, 51) -33.39%, rgb(32, 34, 97) 15.89%, rgb(84, 60, 151) 55.84%, rgb(105, 57, 162) 74.96%);
+      opacity: 1;
+      user-select: none;
+      outline: none;
+
+      &:hover {
+        opacity: 0.9;
+      }
+
+      &:disabled {
+        filter: grayscale(1);
+      }
+
+    }
+  }
+}
+
+.bnt-female {
+  background: linear-gradient(125.02deg, rgb(100, 43, 115) 18.39%, rgb(198, 66, 110) 81.83%);
+}

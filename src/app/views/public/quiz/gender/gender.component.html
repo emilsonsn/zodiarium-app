@@ -1,0 +1,23 @@
+<div class="gender-header">
+  <h3>Selecione o seu gênero</h3>
+  <p>Ajuda-nos a personalizar o seu horóscopo</p>
+</div>
+<div class="gender-container">
+  <div class="gender-card">
+    <ng-lottie
+      containerClass="moving-box"
+      *ngIf="optionsMale"
+      [options]="optionsMale">
+    </ng-lottie>
+    <button class="button-gender" (click)="selectGender('male')">Masculino</button>
+  </div>
+
+  <div class="gender-card">
+    <ng-lottie
+      containerClass="moving-box"
+      *ngIf="optionsFemale"
+      [options]="optionsFemale">
+    </ng-lottie>
+    <button class="button-gender bnt-female" (click)="selectGender('female')">Feminino</button>
+  </div>
+</div>
