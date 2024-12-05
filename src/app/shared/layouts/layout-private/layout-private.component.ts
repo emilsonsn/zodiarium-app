@@ -17,12 +17,12 @@ export class LayoutPrivateComponent {
   titleProcess: string = '';
 
   public menuItem: IMenuItem[] = [
-    {
-      label: 'Home',
-      icon: 'fa-solid fa-house',
-      route: '/painel/home',
-      active: true
-    },
+    // {
+    //   label: 'Home',
+    //   icon: 'fa-solid fa-house',
+    //   route: '/painel/home',
+    //   active: true
+    // },
     {
       label: 'Cliente',
       icon: 'fa-solid fa-users',

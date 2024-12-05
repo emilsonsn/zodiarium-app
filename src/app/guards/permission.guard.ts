@@ -14,7 +14,7 @@ export const permissionGuard: CanActivateFn = (route: ActivatedRouteSnapshot, st
     }),
     catchError(error => {
       console.error('Permission check error:', error);
-      router.navigate(['/painel/home']).then();
+      router.navigate(['/painel/clients']).then();
       return of(false);
     })
   );

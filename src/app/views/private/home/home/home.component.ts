@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import dayjs from 'dayjs';
 
 @Component({
@@ -6,7 +7,7 @@ import dayjs from 'dayjs';
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
 
   public loading: boolean = false;
 
@@ -19,4 +20,12 @@ export class HomeComponent {
     date_to: dayjs().format('YYYY-MM-DD')
   };
 
+  constructor(
+    private readonly routeService: Router,
+  ){
+  }
+
+  ngOnInit(){
+    this.routeService.navigate(['/painel/client']);
+  }
 }
