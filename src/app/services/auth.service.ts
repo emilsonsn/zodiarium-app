@@ -25,7 +25,7 @@ export class AuthService {
   logout(): Observable<any> {
     this._http.post<any>(`${environment.api}/logout`, {}).subscribe(
       () => {
-        this.router.navigate(['/login']).then();
+        this.router.navigate(['/session/login']).then();
       }
     );
 

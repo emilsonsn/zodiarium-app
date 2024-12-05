@@ -1,6 +1,7 @@
-import {NgModule} from '@angular/core';
-import {RouterModule, Routes} from '@angular/router';
-import {LayoutPrivateComponent} from '@shared/layouts/layout-private/layout-private.component';
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { LayoutPrivateComponent } from '@shared/layouts/layout-private/layout-private.component';
+import {permissionGuard} from "@app/guards/permission.guard";
 
 const routes: Routes = [
   {
@@ -40,5 +41,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class PrivateRoutingModule {
-}
+export class PrivateRoutingModule { }

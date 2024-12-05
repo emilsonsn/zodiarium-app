@@ -49,7 +49,7 @@ export class SessionService {
 			.subscribe({
         next: () => {
           this.updateIsAuthenticated(false);
-          this._router.navigate(['/login']);
+          this._router.navigate(['/session/login']);
         },
         error: (err) => {
         }
@@ -57,7 +57,7 @@ export class SessionService {
 		resetStores();
 		this._storage.clear();
 		this.updateIsAuthenticated(false);
-		this._router.navigate(['/login']);
+		this._router.navigate(['/session/login']);
 	}
 
 
@@ -106,10 +106,7 @@ export class SessionService {
   }
 
   public isAuthenticated(): boolean {
-    if(this._storage.get('access_token'))
-      return true;
-    else
-      return false;
+    return !!this._storage.get('access_token');
   }
 
 }
