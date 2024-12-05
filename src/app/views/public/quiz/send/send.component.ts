@@ -26,7 +26,7 @@ export class SendComponent {
   formData = {
     name: '',
     email: '',
-    ddi: '',
+    ddi: '+351',
     phone: ''
   };
 
@@ -44,8 +44,6 @@ export class SendComponent {
 
 
   onSubmit() {
-    console.log('Dados do formulário:', this.formData);
-
     this.zodiacService.data$.pipe(take(1)).subscribe((data) => {
       this.zodiacService.sendData({
         ...data,

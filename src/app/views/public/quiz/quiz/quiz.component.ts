@@ -63,9 +63,6 @@ export class QuizComponent {
       this.updateSteps(this.router.url);
     });
 
-/*    this.zodiacService.data$.subscribe((data) => {
-      console.log('Received data from child:', data);
-    });*/
   }
 
   private updateSteps(currentUrl: string): void {

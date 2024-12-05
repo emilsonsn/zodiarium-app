@@ -27,7 +27,6 @@ export class ClientComponent {
         window.URL.revokeObjectURL(url);
       },
       error: (error) => {
-        console.log(error);
       }
     });
   }

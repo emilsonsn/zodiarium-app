@@ -240,12 +240,10 @@ export class DialogProductComponent {
         file: null
       })
     }
-
   }
 
   public onSubmit(form: FormGroup): void {
     if (!form.valid || this.loading || (this.isNew && !this.filesToSend.length)) {
-      console.log(form.controls);
       form.markAllAsTouched();
       return;
     }

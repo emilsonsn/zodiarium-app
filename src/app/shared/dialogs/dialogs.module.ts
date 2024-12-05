@@ -18,10 +18,13 @@ import { DirectivesModule } from '@shared/directives/directives.module';
 import { PipesModule } from '@shared/pipes/pipes.module';
 import { TablesModule } from '@shared/tables/tables.module';
 import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
+import { DialogSaleComponent } from './dialog-sale/dialog-sale.component';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
-    DialogProductComponent
+    DialogProductComponent,
+    DialogSaleComponent
   ],
   imports: [
     CommonModule,
@@ -45,6 +48,7 @@ import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
     MatIconModule,
     NgxMaskDirective,
     NgxMaskPipe,
+    ToastrModule
   ],
   providers: [provideNgxMask()]
 

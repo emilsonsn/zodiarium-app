@@ -27,7 +27,6 @@ export class LeadComponent {
         window.URL.revokeObjectURL(url);
       },
       error: (error) => {
-        console.log(error);
       }
     });
   }

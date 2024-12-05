@@ -4,7 +4,8 @@ export interface Sale {
   id: number;
   stats: SaleStatus;
   client_id: number;
-  payments: Payment[]
+  payments: Payment[],
+  payment: Payment
 }
 
 export enum SaleStatus {

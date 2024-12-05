@@ -24,6 +24,7 @@
     "@angular/router": "^17.3.0",
     "@angular/ssr": "^17.3.8",
     "@datorama/akita": "^8.0.1",
+    "@stripe/stripe-js": "^5.2.0",
     "bootstrap": "^5.3.3",
     "country-state-city": "^3.2.1",
     "dayjs": "^1.11.13",

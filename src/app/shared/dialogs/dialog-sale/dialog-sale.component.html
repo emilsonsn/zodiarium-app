@@ -1,0 +1,108 @@
+<mat-dialog-content>
+  <ng-container *ngIf="saleStep === 'Setup'">
+    @if(loading) {
+    <div matRipple class="me-auto me-sm-0 mb-sm-0 mb-2 loading">
+      <mat-spinner></mat-spinner>
+    </div>
+    }
+  
+    <div class="d-flex align-items-center justify-content-between">
+      <span class="fw-bold fs-5">Formulário de compra</span>
+      <div matRipple class="close" (click)="onCancel()">
+        <i class="fa-solid fa-close"></i>
+      </div>
+    </div>
+  
+    <mat-divider class="my-3"></mat-divider>
+  
+    <form [formGroup]="form">
+      <div class="row">
+        <div class="col-md-12 col-12 mb-3">
+          <mat-form-field appearance="outline">
+            <mat-label>Método de pagamento</mat-label>
+            <mat-select formControlName="payment_method" placeholder="Método de pagamento">
+              <mat-option *ngFor="let method of paymentsMethods" [value]="method.value"> {{ method.label }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+  
+        <ng-container *ngIf="form.get('payment_method').value === 'Mbway'">
+          <div class="col-md-12 mb-3">
+            <mat-form-field appearance="outline">
+              <mat-label>Telefone</mat-label>
+              <input formControlName="phone" matInput type="phone" [mask]="'000 000 000'"
+              placeholder="000 000 000">
+            </mat-form-field>
+          </div>
+        </ng-container>
+      </div>
+    </form>
+  </ng-container>
+
+  <ng-container *ngIf="saleStep === 'EupagoPayment'">
+    <div class="payment-info-container">
+      <h2 class="title">Pagamento Multibanco</h2>
+      <p class="description" *ngIf="sale.payment.entity">
+        Por favor, utilize os dados abaixo para efetuar o pagamento. Após o processamento, os relatórios escolhidos serão enviados para o e-mail cadastrado.
+      </p>
+
+      <p class="description" *ngIf="!sale.payment.entity">
+        Seu pagamento foi gerado. Faça o pagamento em até 5 minutos. Após o processamento, os relatórios escolhidos serão enviados para o e-mail cadastrado.
+      </p>
+  
+      <div class="payment-data">
+        <div class="payment-field" *ngIf="sale.payment.entity">
+          <span class="label">Entidade:</span>
+          <span class="value">{{ sale.payment.entity }}</span>
+        </div>
+        <div class="payment-field">
+          <span class="label">Referência:</span>
+          <span class="value">{{ sale.payment.reference }}</span>
+        </div>
+      </div>
+
+      <div *ngIf="upsellProducts" class="upsell-section">
+        <div class="upsell-card">
+            <div class="promotion">
+                <h3 class="text-center">Outras pessoas também compraram:</h3>
+            </div>
+            <div class="upsell-products p-4">
+                <div *ngFor="let product of upsellProducts" class="upsell-product mt-2">
+                  <img [src]="product.image" alt="{{ product.title }}" class="upsell-image" />
+                  <p>{{ product.title }}</p>
+                  <button class="buy-button pulsating" (click)="upsellPay(product.id)">Comprar por € {{ product.amount }}</button>
+                </div>
+            </div>
+            </div>
+      </div>   
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf="saleStep === 'StripePayment'">
+    <h2 class="title">Pagamento com Stripe</h2>
+    <p class="description">
+      Você será redirecionado para finalizar o pagamento com segurança. <br>
+    </p>
+    <div id="stripe-checkout-container"></div>
+  </ng-container>
+
+  <mat-dialog-actions *ngIf="saleStep === 'Setup'">
+    <div class="container">
+      <div id="actionsDialog" class="flex-sm-row flex-column">
+        <div id="buttonsDialog" class="flex-sm-row flex-column">
+          <div class="col-auto">
+            <button
+            matRipple 
+            id="submit"
+            (click)="onSubmit(form)"
+            >
+              RECEBER RELATÓRIO
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </mat-dialog-actions>
+  
+
+ 

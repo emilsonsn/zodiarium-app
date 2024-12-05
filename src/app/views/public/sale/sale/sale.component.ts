@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { ProductService } from '@services/product.service';
+import { DialogSaleComponent } from '@shared/dialogs/dialog-sale/dialog-sale.component';
+import { finalize } from 'rxjs';
 
 @Component({
   selector: 'app-sale',
@@ -10,8 +13,12 @@ export class SaleComponent {
   mainProduct: any = null;
   upsellProducts: any[] = [];
   bundle: any = null;
+  loading: boolean = false;
 
-  constructor(private readonly _productService: ProductService) {}
+  constructor(
+    private readonly _productService: ProductService,
+    private readonly _dialog: MatDialog
+  ) {}
 
   ngOnInit() {
     this.getProducts();
@@ -25,11 +32,38 @@ export class SaleComponent {
         this.bundle = res.data.bundle;
 
         this.bundle.reports.unshift(this.mainProduct);
-        console.log(this.bundle);
       },
       error: (error: any) => {
         console.error('Error fetching products:', error);
       }
     });
+  }
+
+  openDialogProduct(products?: string) {
+    if(products === 'bundle'){
+      let bundles = this.bundle.reports.map(product => product.id);
+      products = bundles.join(',');
+    }
+
+    this._initOrStopLoading()
+    this._dialog
+      .open(DialogSaleComponent, {
+        data: products,
+        width: '95%',
+        maxWidth: '850px',
+        maxHeight: '95%',
+        disableClose: true,
+      })
+      .afterClosed()
+      .pipe(finalize(() => this._initOrStopLoading()))
+      .subscribe((res) => {
+        if (res) {
+
+        }
+      });
+  }
+
+  private _initOrStopLoading(){
+    this.loading = !this.loading;
   }
 }

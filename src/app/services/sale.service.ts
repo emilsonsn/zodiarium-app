@@ -1,8 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ApiResponse, ApiResponsePageable, PageControl } from '@models/application';
-import { Client } from '@models/client';
-import { ZodiacData } from '@models/quiz/zodiac';
 import { Sale } from '@models/sale';
 import { Utils } from '@shared/utils';
 import { Observable } from 'rxjs';
@@ -33,8 +31,5 @@ export class SaleService {
   create(sale: Sale): Observable<ApiResponse<Sale>> {
     return this._http.post<ApiResponse<Sale>>(`${this.baseUrl}/create`, sale);
   }
-
-
-  // Get a funnel step by ID
 
 }
