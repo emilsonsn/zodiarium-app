@@ -2,7 +2,7 @@
   <div class="hour-of-the-day-card">
     <div class="hour-of-the-day-card-header">
       <h3>Introduza a sua hora de nascimento</h3>
-      <p>É importante para definir o ascendente, as casas e a posição da Lua no seu mapa natal</p>
+      <p>É importante para definir o ascendente, as casas e a posição da Lua no seu mapa astral.</p>
     </div>
     <div class="lottie-container">
       <ng-lottie
@@ -16,7 +16,6 @@
       <input [ngxMatTimepicker]="timepicker" [(ngModel)]="selectedTime" (ngModelChange)="timeChanged($event)" [placeholder]="'hh:mm'">
       <ngx-mat-timepicker #timepicker></ngx-mat-timepicker>
     </div>
-
 
     <div class="w-100 text-center" style="color: #666;">
       <p>*Se não souber a hora exata de nascimento, não há problema, ainda assim encontrará muitos bons insights sem saber a sua hora exata de nascimento.</p>
