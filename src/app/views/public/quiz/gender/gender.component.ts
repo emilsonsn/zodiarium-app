@@ -62,6 +62,5 @@ export class GenderComponent {
     });
 
     this.router.navigate(['/quiz/send']).then();
-
   }
 }

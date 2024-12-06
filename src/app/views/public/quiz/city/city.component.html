@@ -42,7 +42,7 @@
     <div class="w-100 d-flex justify-content-center align-items-center mt-4">
       <button
         class="button-city"
-        routerLink="/quiz/hour-of-the-day"
+        (click)="navigateToQuiz('/quiz/hour-of-the-day')"
         [disabled]="!selectedCity">
         Continuar
       </button>

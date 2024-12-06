@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import { Router } from '@angular/router';
 import {AnimationOptions} from "ngx-lottie";
 
 @Component({
@@ -79,9 +80,15 @@ export class HomeComponent {
     }
   ];
 
+  constructor(private router: Router){}
+
+  navigateToQuiz(rota) {
+    this.router.navigate([`${rota}`]);
+  }
 
   scrollToTop(): void {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
+
 
 }

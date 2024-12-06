@@ -29,6 +29,10 @@ export class CityComponent implements OnInit {
   ) {
   }
 
+  navigateToQuiz(rota) {
+    this.router.navigate([`${rota}`]);
+  }
+
   ngOnInit(): void {
 
     this.loadAllCities();

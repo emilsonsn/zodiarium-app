@@ -42,7 +42,6 @@ export class SendComponent {
     { name: 'Itália', code: '+39' }
   ];
 
-
   onSubmit() {
     this.zodiacService.data$.pipe(take(1)).subscribe((data) => {
       this.zodiacService.sendData({

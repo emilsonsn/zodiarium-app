@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {AnimationOptions} from "ngx-lottie";
 import {ZodiacService} from "@services/quiz/zodiac.service";
 import {take} from "rxjs/operators";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-birth-date',
@@ -19,7 +20,13 @@ export class BirthDateComponent {
   years: number[] = Array.from({length: 100}, (_, i) => new Date().getFullYear() - i);
   days: number[] = [];
 
-  constructor(private readonly zodiacService: ZodiacService) {
+  constructor(
+    private readonly zodiacService: ZodiacService,
+    private router: Router
+  ) {}  
+
+  navigateToQuiz(rota) {
+    this.router.navigate([`${rota}`]);
   }
 
   ngOnInit(): void {
@@ -50,6 +57,7 @@ export class BirthDateComponent {
         month_birth: this.selectedMonth,
         year_birth: this.selectedYear.toString(),
       });
+      this.navigateToQuiz('/quiz/sign');
     });
   }
 }

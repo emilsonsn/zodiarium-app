@@ -24,6 +24,10 @@ export class SignComponent {
   ) {
   }
 
+  navigateToQuiz(rota) {
+    this.router.navigate([`${rota}`]);
+  }
+
   ngOnInit() {
     this.zodiacService.data$.pipe(take(1)).subscribe((data) => {
       if (data) {

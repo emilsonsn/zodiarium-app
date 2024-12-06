@@ -27,7 +27,10 @@ export class HourOfTheDayComponent {
         this.router.navigate(['/quiz/birth-date']).then();
       }
     });
+  }
 
+  navigateToQuiz(rota) {
+    this.router.navigate([`${rota}`]);
   }
 
   timeChanged(hour: string) {
