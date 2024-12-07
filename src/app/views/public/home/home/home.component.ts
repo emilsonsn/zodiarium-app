@@ -83,6 +83,7 @@ export class HomeComponent {
   constructor(private router: Router){}
 
   navigateToQuiz(rota) {
+    alert('De fato, apertou o botão');
     this.router.navigate([`${rota}`]);
   }
 
