@@ -84,7 +84,9 @@ export class HomeComponent {
 
   navigateToQuiz(rota) {
     alert('De fato, apertou o botão');
-    this.router.navigate([`${rota}`]);
+    setTimeout(() => {
+      this.router.navigate([`${rota}`]);
+    }, 100); 
   }
 
   scrollToTop(): void {
