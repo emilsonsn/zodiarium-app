@@ -82,8 +82,9 @@ export class HomeComponent {
 
   constructor(private router: Router){}
 
-  navigateToQuiz(rota) {
+  navigateToQuiz(rota, event: Event) {
     alert('De fato, apertou o botão');
+    event.preventDefault();
     setTimeout(() => {
       this.router.navigate([`${rota}`]);
     }, 100); 
