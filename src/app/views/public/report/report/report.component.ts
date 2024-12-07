@@ -65,7 +65,7 @@ export class ReportComponent {
   }
   
   private displayFn(city: any): string {
-    return city && city.name ? `${city.name}, ${city.state}, ${city.country}` : '';
+    return city && city.name ? city.name : '';
   }
 
   private getHourOrMinute(hour_and_minutes, search = 'hour'){

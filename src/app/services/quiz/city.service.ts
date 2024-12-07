@@ -3,19 +3,18 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import {environment} from "@env/environment";
+import { ApiResponse, ApiResponseQuery } from '@models/application';
 
 export interface City {
   id: number;
   name: string;
-  state: string;
-  country: string;
 }
 
 @Injectable({
   providedIn: 'root',
 })
 export class CityService {
-  private readonly apiUrl = `${environment.api}/city}`;
+  private readonly apiUrl = `${environment.api}/client/citys`;
 
   constructor(private http: HttpClient) {}
 
@@ -25,9 +24,9 @@ export class CityService {
    * @returns Observable contendo uma lista de cidades filtradas.
    */
   searchCities(term: string): Observable<City[]> {
-    const params = { q: term }; // Substitua 'q' pelo parâmetro adequado, se necessário
-    return this.http.get<City[]>(this.apiUrl, { params }).pipe(
-      map((cities) => cities.filter((city) => city.name.toLowerCase().includes(term.toLowerCase())))
+    const params = { search_term: term }; // Substitua 'q' pelo parâmetro adequado, se necessário
+    return this.http.get<ApiResponseQuery<City>>(this.apiUrl, { params }).pipe(
+      map((cities) => cities.data.filter((city) => city.name.toLowerCase().includes(term.toLowerCase())))
     );
   }
 

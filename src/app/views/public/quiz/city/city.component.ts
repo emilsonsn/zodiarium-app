@@ -12,7 +12,7 @@ import {City, CityService} from "@services/quiz/city.service";
   styleUrls: ['./city.component.scss'],
 })
 export class CityComponent implements OnInit {
-  filteredCities$: Observable<City[]> | undefined;
+  filteredCities$: any;
   searchTerm: string = '';
   selectedCity: City | null = null;
 
@@ -23,7 +23,7 @@ export class CityComponent implements OnInit {
   constructor(
     private readonly zodiacService: ZodiacService,
     private readonly router: Router,
-    private cityService: CityService
+    private _cityService: CityService
   ) {
   }
 
@@ -46,12 +46,12 @@ export class CityComponent implements OnInit {
     const input = event.target as HTMLInputElement;
     const term = input.value.trim();
     if (term.length > 2) {
-      this.filteredCities$ = this.cityService.searchCities(term);
+      this.filteredCities$ = this._cityService.searchCities(term);
     }
   }
 
   displayFn(city: any): string {
-    return city && city.name ? `${city.name}, ${city.state}, ${city.country}` : '';
+    return city && city.name ? city.name : '';
   }
 
   onCitySelected(city: any): void {

@@ -23,20 +23,20 @@
             *ngFor="let city of (filteredCities$ | async)"
             [value]="city"
             (onSelectionChange)="onCitySelected(city)">
-            {{ city.name }}, {{ city.state }}, {{ city.country }}
+            {{ city.name }}
           </mat-option>
         </mat-autocomplete>
       </mat-form-field>
     </ng-container>
 
     <!-- Animação de loading -->
-    <div class="lottie-container">
+    <!-- <div class="lottie-container">
       <ng-lottie
         containerClass="moving-box"
         *ngIf="options"
         [options]="options">
       </ng-lottie>
-    </div>
+    </div> -->
 
     <!-- Botão "Continuar" -->
     <div class="w-100 d-flex justify-content-center align-items-center mt-4">

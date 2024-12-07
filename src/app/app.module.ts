@@ -17,7 +17,7 @@ import { AuthInterceptorService } from '@services/auth-interceptor.service';
   ],
   imports: [
     BrowserModule,
-    // BrowserAnimationsModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
     ToastrModule.forRoot({
