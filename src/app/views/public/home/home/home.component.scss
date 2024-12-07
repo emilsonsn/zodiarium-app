@@ -9,10 +9,12 @@
   background: linear-gradient(rgb(255, 240, 240) 0%, rgb(255, 251, 251) 15%, rgb(255, 251, 251) 80%, rgb(255, 240, 240) 100%);
   padding: 1rem;
   border-radius: 0.5rem;
+  overflow-x: hidden !important;
 }
 
-.zodiac_sing{
-  max-width: 400px;
+.zodiac_sing {
+  max-width: 350px;
+  width: 90%;
 }
 
 section {

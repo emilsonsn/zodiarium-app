@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import {City, Country, State} from 'country-state-city';
-import {BehaviorSubject, Observable} from 'rxjs';
-import {debounceTime, map, take} from 'rxjs/operators';
+import {Observable} from 'rxjs';
+import {take} from 'rxjs/operators';
 import {ZodiacService} from '@services/quiz/zodiac.service';
 import {Router} from '@angular/router';
 import {AnimationOptions} from "ngx-lottie";
+import {City, CityService} from "@services/quiz/city.service";
 
 @Component({
   selector: 'app-city',
@@ -12,12 +12,9 @@ import {AnimationOptions} from "ngx-lottie";
   styleUrls: ['./city.component.scss'],
 })
 export class CityComponent implements OnInit {
+  filteredCities$: Observable<City[]> | undefined;
   searchTerm: string = '';
-  filteredCities$: Observable<any[]>;
-  allCities: any[] = [];
-  loading: boolean = true;
-  private searchSubject = new BehaviorSubject<string>('');
-  selectedCity: any = null;
+  selectedCity: City | null = null;
 
   options: AnimationOptions = {
     path: '/assets/animation/Animation - 1732981606697.json',
@@ -25,24 +22,16 @@ export class CityComponent implements OnInit {
 
   constructor(
     private readonly zodiacService: ZodiacService,
-    private readonly router: Router
+    private readonly router: Router,
+    private cityService: CityService
   ) {
   }
 
-  navigateToQuiz(rota) {
-    this.router.navigate([`${rota}`]);
+  navigateToQuiz(rota: string) {
+    this.router.navigate([`${rota}`]).then();
   }
 
   ngOnInit(): void {
-
-    this.loadAllCities();
-
-    this.filteredCities$ = this.searchSubject.pipe(
-      debounceTime(500),
-      map((term) => this.filterCities(term))
-    );
-
-
     this.zodiacService.data$.pipe(take(1)).subscribe((data) => {
       if (data != null && data.address) {
         this.selectedCity = data.address;
@@ -51,59 +40,14 @@ export class CityComponent implements OnInit {
         this.router.navigate(['/quiz/birth-date']).then();
       }
     });
-
-
-  }
-
-  private loadAllCities(): void {
-    const portugal = Country.getCountryByCode('PT'); // Obtém o país Portugal pelo código ISO
-    if (!portugal) {
-      console.error('País Portugal não encontrado.');
-      return;
-    }
-  
-    const states = State.getStatesOfCountry(portugal.isoCode); // Obtém todos os estados de Portugal
-    const batchSize = 1000; // Quantidade de cidades por lote
-    let currentIndex = 0;
-  
-    const loadBatch = () => {
-      const batch: any[] = [];
-      while (batch.length < batchSize && currentIndex < states.length) {
-        const state = states[currentIndex];
-        const stateCities = City.getCitiesOfState(portugal.isoCode, state.isoCode); // Obtém cidades do estado atual
-        batch.push(
-          ...stateCities.map((city) => ({
-            name: city.name,
-            state: state.name,
-            country: portugal.name,
-          }))
-        );
-        currentIndex++;
-      }
-  
-      this.allCities.push(...batch);
-      if (currentIndex < states.length) {
-        setTimeout(loadBatch, 0); // Permite a execução do próximo lote
-      } else {
-        this.loading = false;
-      }
-    };
-  
-    loadBatch();
-  }  
-
-  private filterCities(term: string): any[] {
-    if (!term || term.length < 3) {
-      return [];
-    }
-    return this.allCities.filter((city) =>
-      city.name.toLowerCase().includes(term.toLowerCase())
-    );
   }
 
   onSearch(event: Event): void {
-    const searchTerm = (event.target as HTMLInputElement).value;
-    this.searchSubject.next(searchTerm);
+    const input = event.target as HTMLInputElement;
+    const term = input.value.trim();
+    if (term.length > 2) {
+      this.filteredCities$ = this.cityService.searchCities(term);
+    }
   }
 
   displayFn(city: any): string {

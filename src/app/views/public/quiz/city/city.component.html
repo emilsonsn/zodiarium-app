@@ -2,11 +2,11 @@
   <div class="city-card">
 
     <!-- Verificação de loading -->
-    <ng-container *ngIf="!loading">
+    <ng-container>
       <div class="city-card-header">
         <h3>Especifique o seu local de nascimento</h3>
         <p>Utilizamos esta informação para determinar a posição e a influência dos planetas no seu mapa astral.</p>
-      </div>      
+      </div>
 
       <!-- Campo de Autocomplete -->
       <mat-form-field style="width: 330px;">
@@ -33,7 +33,7 @@
     <div class="lottie-container">
       <ng-lottie
         containerClass="moving-box"
-        *ngIf="options && loading"
+        *ngIf="options"
         [options]="options">
       </ng-lottie>
     </div>
