@@ -21,6 +21,7 @@ import {MatProgressSpinner} from "@angular/material/progress-spinner";
 import {MatSelect, MatSelectTrigger} from "@angular/material/select";
 import { NgxMatTimepickerModule } from 'ngx-mat-timepicker';
 import {NgxMaskDirective} from "ngx-mask";
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import {NgxMaskDirective} from "ngx-mask";
     MatSelect,
     NgxMatTimepickerModule.setLocale('pt-PT'),
     NgxMaskDirective,
+    ToastrModule  
   ]
 })
 export class QuizModule { }

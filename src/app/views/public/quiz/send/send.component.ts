@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {Router} from "@angular/router";
 import {ZodiacService} from "@services/quiz/zodiac.service";
+import { ToastrService } from 'ngx-toastr';
 import {take} from "rxjs/operators";
 
 @Component({
@@ -12,7 +13,8 @@ export class SendComponent {
 
   constructor(
     private readonly zodiacService: ZodiacService,
-    private readonly router: Router
+    private readonly router: Router,
+    private readonly _toastService: ToastrService
   ) {
 
     this.zodiacService.data$.pipe(take(1)).subscribe((data) => {
@@ -43,6 +45,10 @@ export class SendComponent {
   ];
 
   onSubmit() {
+    if(!this.formData.name || !this.formData.email || !this.formData.phone){
+      this._toastService.warning('Preencha todos os campos para continuar');
+      return;
+    }
     this.zodiacService.data$.pipe(take(1)).subscribe((data) => {
       this.zodiacService.sendData({
         ...data,
