@@ -31,23 +31,18 @@ export class SignComponent {
   ngOnInit() {
     this.zodiacService.data$.pipe(take(1)).subscribe((data) => {
       if (data) {
+        this.zodiacService.getClientZodiacSign(data.day_birth, data.month_birth).subscribe((res) => {
+          setTimeout(() => {
+            this.data = res.data;
 
-        if (data.zodiacSign) {
-          this.data = data.zodiacSign;
-        } else {
-          this.zodiacService.getClientZodiacSign(data.day_birth, data.month_birth).subscribe((res) => {
-            setTimeout(() => {
-              this.data = res.data;
+            this.zodiacService.sendData({
+                ...data,
+                zodiacSign: res.data
+              }
+            );
 
-              this.zodiacService.sendData({
-                  ...data,
-                  zodiacSign: res.data
-                }
-              );
-
-            }, 2000);
-          });
-        }
+          }, 2000);
+        });
       } else {
         this.router.navigate(['/quiz/birth-date']).then();
       }
