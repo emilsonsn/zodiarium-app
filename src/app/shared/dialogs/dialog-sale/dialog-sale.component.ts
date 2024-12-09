@@ -19,6 +19,8 @@ export class DialogSaleComponent implements OnInit{
   public loading: boolean;
   public sale: Sale;
   public stripe: Stripe | null = null;
+  public totalAmount: number = 0.1;
+  public productsArray = [];
 
   saleSteps = ['Setup', 'EupagoPayment', 'StripePayment'];
 
@@ -43,7 +45,7 @@ export class DialogSaleComponent implements OnInit{
 
   constructor(
     @Inject(MAT_DIALOG_DATA)
-    protected readonly _data: string,
+    protected readonly _data: {products: string, amount: number},
     private readonly _fb: FormBuilder,
     private readonly _dialogRef: MatDialogRef<DialogSaleComponent>,
     private readonly _saleService: SaleService,
@@ -64,8 +66,10 @@ export class DialogSaleComponent implements OnInit{
     const client_id = parseInt(localStorage.getItem('client_id') ?? '0');
     this.form.patchValue({
       client_id,
-      products: this._data
+      products: this._data.products
     });
+
+    this.totalAmount = parseFloat(this._data.amount+'');
 
     this.form.get('payment_method').valueChanges
     .subscribe(value => {
@@ -76,6 +80,8 @@ export class DialogSaleComponent implements OnInit{
         }
         this.form.get('phone').updateValueAndValidity()
     })
+
+    this.loadUpsel();
   }
 
   public onSubmit(form: FormGroup): void {
@@ -102,8 +108,7 @@ export class DialogSaleComponent implements OnInit{
         this.sale = res.data;
         switch(this.sale.payment.origin_api) {
           case 'Eupago':
-            this.saleStep = this.saleSteps[1];
-            if(!this.isUpsell) this.loadUpsel();
+            this.saleStep = this.saleSteps[1];          
             break;
           case 'Stripe':
             this.saleStep = this.saleSteps[2];
@@ -135,13 +140,20 @@ export class DialogSaleComponent implements OnInit{
     });
   }
 
-  public upsellPay(product_id){
-    this.form.get('products').patchValue(product_id+'');
-    this.isUpsell = true;
-    this.upsellProducts = null;
-    this.saleStep = this.saleSteps[0];
+  public upsellPay(product_id, amount) {
+    this.productsArray = (this.form.get('products').value.toString()).split(',');
+  
+    if (this.productsArray.includes(product_id.toString())) {
+      this.productsArray = this.productsArray.filter(id => id !== product_id.toString());
+      this.totalAmount -= amount;
+    } else {
+      this.productsArray.push(product_id.toString());
+      this.totalAmount += parseFloat(amount);
+    }
+    console.log(this.productsArray);
+    this.form.get('products').patchValue(this.productsArray.join(','));
   }
-
+  
   private async setupStripeCheckout(transactionId: string): Promise<void> {
     this.stripe = await loadStripe('pk_live_51QSQPKAcoLcDjN3KdXeTdcQuCjgglEjQXOKCkIn9WmtkaA3mKDjN8yjwNhvhhXiKrlUIN2fAolr2C9o7mtGh4YVI0091RT5Y62'); // Substitua pela sua chave pública Stripe
   

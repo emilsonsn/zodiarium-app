@@ -37,6 +37,28 @@
         </ng-container>
       </div>
     </form>
+    <div *ngIf="upsellProducts?.length" class="upsell-section">
+      <div class="upsell-card">
+          <div class="promotion">
+              <h3 class="text-center">Outras pessoas também compraram:</h3>
+          </div>
+          <div class="upsell-products p-4">
+              <div *ngFor="let product of upsellProducts" class="upsell-product mt-2">
+                <p>{{ product.title }}</p>
+                <img [src]="product.image" alt="{{ product.title }}" class="upsell-image" />
+                <button class="buy-button pulsating {{ productsArray.includes(product.id.toString()) ? 'incluse' : '' }}" (click)="upsellPay(product.id, product.amount)">
+                  @if(productsArray.includes(product.id.toString())){
+                    <i class="fa-solid fa-circle-check"></i>
+                    Incluso
+                  }
+                  @else{
+                    € {{ product.amount }}                    
+                  }
+                </button>
+              </div>
+          </div>
+        </div>
+    </div> 
   </ng-container>
 
   <ng-container *ngIf="saleStep === 'EupagoPayment'">
@@ -59,22 +81,13 @@
           <span class="label">Referência:</span>
           <span class="value">{{ sale.payment.reference }}</span>
         </div>
+        <div class="payment-field">
+          <span class="label">Valor:</span>
+          <span class="value">{{ sale.payment.value | currency:'EUR' }}</span>
+        </div>
       </div>
 
-      <div *ngIf="upsellProducts?.length" class="upsell-section">
-        <div class="upsell-card">
-            <div class="promotion">
-                <h3 class="text-center">Outras pessoas também compraram:</h3>
-            </div>
-            <div class="upsell-products p-4">
-                <div *ngFor="let product of upsellProducts" class="upsell-product mt-2">
-                  <img [src]="product.image" alt="{{ product.title }}" class="upsell-image" />
-                  <p>{{ product.title }}</p>
-                  <button class="buy-button pulsating" (click)="upsellPay(product.id)">Comprar por € {{ product.amount }}</button>
-                </div>
-            </div>
-            </div>
-      </div>   
+      
     </div>
   </ng-container>
 
@@ -96,7 +109,7 @@
             id="submit"
             (click)="onSubmit(form)"
             >
-              RECEBER RELATÓRIO
+              COMPRAR POR {{ totalAmount | currency:'EUR'}}
             </button>
           </div>
         </div>

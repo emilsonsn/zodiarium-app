@@ -40,15 +40,27 @@ export class SaleComponent {
   }
 
   openDialogProduct(products?: string) {
-    if(products === 'bundle'){
-      let bundles = this.bundle.reports.map(product => product.id);
-      products = bundles.join(',');
+    let amount = 0;
+    switch (products) {
+      case 'bundle':
+        let bundles = this.bundle.reports.map(product => product.id);
+        products = bundles.join(',');
+        amount = this.bundle.reports
+          .map(product => +product.amount)
+          .reduce((total, current) => total + current, 0);
+        break;
+    
+      case 'main':
+        products = this.mainProduct.id;
+        amount = this.mainProduct.amount;
+        break;
     }
+    
 
     this._initOrStopLoading()
     this._dialog
       .open(DialogSaleComponent, {
-        data: products,
+        data: {products, amount},
         width: '95%',
         maxWidth: '850px',
         maxHeight: '95%',
