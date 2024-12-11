@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Sale } from '@models/sale';
@@ -7,13 +7,14 @@ import { ToastrService } from 'ngx-toastr';
 import { finalize } from 'rxjs';
 import { loadStripe, Stripe } from '@stripe/stripe-js';
 import { ProductService } from '@services/product.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dialog-sale',
   templateUrl: './dialog-sale.component.html',
   styleUrl: './dialog-sale.component.scss'
 })
-export class DialogSaleComponent implements OnInit{
+export class DialogSaleComponent implements OnInit, OnDestroy{
 
   public form: FormGroup;
   public loading: boolean;
@@ -21,6 +22,7 @@ export class DialogSaleComponent implements OnInit{
   public stripe: Stripe | null = null;
   public totalAmount: number = 0.1;
   public productsArray = [];
+  private intervalId: any;
 
   saleSteps = ['Setup', 'EupagoPayment', 'StripePayment'];
 
@@ -51,6 +53,7 @@ export class DialogSaleComponent implements OnInit{
     private readonly _saleService: SaleService,
     private readonly _toastr: ToastrService,
     private readonly _productService: ProductService,
+    private readonly _route: Router
   ){}
 
   ngOnInit(){    
@@ -84,6 +87,12 @@ export class DialogSaleComponent implements OnInit{
     this.loadUpsel();
   }
 
+  ngOnDestroy(): void {
+    if (this.intervalId) {
+      clearInterval(this.intervalId);
+    }
+  }
+
   public onSubmit(form: FormGroup): void {
     if (!form.valid) {
       form.markAllAsTouched();
@@ -106,6 +115,7 @@ export class DialogSaleComponent implements OnInit{
     .subscribe({
       next: (res) =>{
         this.sale = res.data;
+        this.verifyPayment(res.data.id);
         switch(this.sale.payment.origin_api) {
           case 'Eupago':
             this.saleStep = this.saleSteps[1];          
@@ -115,13 +125,28 @@ export class DialogSaleComponent implements OnInit{
             setTimeout(() => this.setupStripeCheckout(this.sale.payment.reference), 1500);
             break;
           default:
-
         }
       },
       error: (error) => {
         this._toastr.error(error.error.message)
       }
     });
+  }
+
+  private verifyPayment(id){    
+    this.intervalId = setInterval(() => {
+      this._saleService.verifyPayment(id)
+     .subscribe({
+      next: (res) => {
+        console.log(res);
+        if(res?.data?.paid){
+          this._dialogRef.close();
+          this._route.navigate(['/success']);
+        }
+      },
+      error(){}
+     });
+    }, 5000);
   }
 
   public onCancel(): void {

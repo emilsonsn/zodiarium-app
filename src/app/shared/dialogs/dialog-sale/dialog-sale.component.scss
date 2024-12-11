@@ -96,6 +96,9 @@
       width: 100%;
 
       .upsell-product{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
         width: 90%;
         max-width: 150px;
         margin: 0 10px;
@@ -109,6 +112,8 @@
 
         .upsell-image {
           border-radius: 10px;
+          height: 80px;
+          margin-bottom: 15px;
           object-fit: cover;
         }
         

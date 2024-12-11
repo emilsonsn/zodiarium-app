@@ -28,6 +28,10 @@ export class SaleService {
     return this._http.get(`${this.baseUrl}/${id}`);
   }
 
+  verifyPayment(id: string): Observable<any> {
+    return this._http.get(`${this.baseUrl}/verify-payment/${id}`);
+  }
+  
   create(sale: Sale): Observable<ApiResponse<Sale>> {
     return this._http.post<ApiResponse<Sale>>(`${this.baseUrl}/create`, sale);
   }
