@@ -14,22 +14,22 @@ export class HomeComponent {
 
   itemPublic: { icon: string, title: string, description: string }[] = [
     {
-      icon: "fa-solid fa-house",
+      icon: "assets/images/image1.svg",
       title: "Orientação individual",
       description: "Receba conselhos personalizados dos nossos consultores especialistas, adaptados ao seu mapa astrológico."
     },
     {
-      icon: "fa-solid fa-file-lines",
+      icon: "assets/images/image2.svg",
       title: "Leitura astrológica personalizada",
       description: "Obtenha uma leitura detalhada que destaca o seu perfil astrológico e a sua influência na sua vida e relações."
     },
     {
-      icon: "fa-solid fa-lightbulb",
+      icon: "assets/images/image3.svg",
       title: "Compreensão mais profunda de si mesmo",
       description: "Explore as profundezas da sua personalidade, forças, fraquezas e tendências inatas para promover crescimento pessoal e desenvolvimento."
     },
     {
-      icon: "fa-solid fa-heart",
+      icon: "assets/images/image4.svg",
       title: "Padrões de relacionamento reveladores",
       description: "Descubra os padrões que regem os seus relacionamentos e desvende as subtilezas das suas necessidades emocionais e sexuais."
     },

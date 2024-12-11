@@ -124,6 +124,7 @@ export class SettingComponent {
       footer_text: [null, [Validators.required]],
       api_key: [null, [Validators.required]],
       bearer_token: [null, [Validators.required]],
+      tags: [null]
     })
 
     this._initOrStopLoading();
@@ -205,6 +206,7 @@ export class SettingComponent {
       formData.append('footer_text', form.get('footer_text')?.value);
       formData.append('api_key', form.get('api_key')?.value);
       formData.append('bearer_token', form.get('bearer_token')?.value);
+      formData.append('tags', form.get('tags')?.value);
 
       if (this.profileImageFile) {
         formData.append('logo', this.profileImageFile);

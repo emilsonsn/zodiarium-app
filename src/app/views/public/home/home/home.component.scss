@@ -2,6 +2,8 @@
 
 .home-content {
   display: flex;
+  max-width: 750px;
+  margin: 0 auto;
   flex-direction: column;
   gap: 2rem;
   justify-content: center;
@@ -34,9 +36,38 @@ section {
   background-color: $secondary-color;
 }
 
+.autority{
+  h3{
+    text-align: center;
+    font-weight: 600;
+    font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+}
+
+  .cards-images{
+    display: flex;
+    flex-direction: column;
+    & > div {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+
+      & > div{
+        display: flex;
+        margin: 10px;
+    
+        img{
+          height: 100%;
+        }
+      }
+    } 
+  }
+}
+
+
 .section-title {
   padding: 66px 100px 80px;
   text-align: center;
+  font-family: 'Open Sans', Arial, Helvetica, sans-serif;
 
   h3, h4 {
     font-weight: bold;

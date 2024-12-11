@@ -1,0 +1,21 @@
+.success-content{
+    padding: 30px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    max-width: 600px;
+    margin: 0 auto;
+
+    .icon{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 8rem;
+        color: #202260;
+    }
+
+    h1{
+        margin-top: 10px;
+        text-align: center;
+    }
+}
