@@ -6,7 +6,12 @@ export interface Client {
   email: string;
   whatsapp: number;
   zodiacSignDetail?: ZodiacSignDetail;
+  sunText?: string;
+  moonText?: string;
+  mission?: string;
+  luck?: string;
+  relationships?: string
   singChartBs4?: string;
-  created_at: Date;
-  updated_at: Date;
+  created_at?: Date;
+  updated_at?: Date;
 }
