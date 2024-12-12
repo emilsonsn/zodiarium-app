@@ -29,7 +29,11 @@
   }
 
   .more-details{
-    & >div{
+    & > div{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
       margin-bottom: 30px;
       padding: 20px;
 
@@ -64,6 +68,12 @@
     font-size: 1.5rem;
     margin: 10px 0;
   }
+
+  .zodiac-chart, .zodiac-icon, .zodiac-name{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
   
   .zodiac-chart img {
     width: 95%;
@@ -77,17 +87,39 @@
     margin: 15px 0;
     color: #666;
   }
-  
-  .btn-report {
-    background-color: #ff9900;
-    color: #fff;
-    font-size: 1rem;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    animation: blink 1s infinite;
+
+  .btn-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .btn-report {
+      min-width: 205;
+      background-color: #ff9900;
+      color: #fff;
+      margin: 0 auto;
+      font-size: 1rem;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      animation: blink 1s infinite;
+    }
+
+    .btn-next {
+      min-width: 205;
+      background-color: #032c63;
+      color: #fff;
+      margin: 0 auto;
+      font-size: 1rem;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      animation: blink 1s infinite;
+    }
   }
+
   
   @keyframes blink {
     0%, 100% {

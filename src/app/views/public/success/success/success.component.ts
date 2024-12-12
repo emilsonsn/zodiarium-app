@@ -14,7 +14,7 @@ export class SuccessComponent {
     private sanitizer: DomSanitizer
   ){}
 
-  public tags: SafeHtml;
+  public tags: SafeHtml = '';
 
   ngOnInit(): void {
     this.getSettings();  
@@ -24,7 +24,7 @@ export class SuccessComponent {
     this._settingService.search()
     .subscribe({
         next: (res) => {
-          this.tags = this.sanitizer.bypassSecurityTrustHtml(res?.tags);
+          this.tags = this.sanitizer.bypassSecurityTrustHtml(res?.tags) ?? '';
         },
         error: (error) => {
           

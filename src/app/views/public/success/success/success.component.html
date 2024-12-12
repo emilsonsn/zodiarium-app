@@ -45,5 +45,5 @@
         </div>
     </div>
 
-    <div [innerHTML]="tags" class="tags"></div>
+    <div *ngIf="tags" [innerHTML]="tags" class="tags"></div>
 </div>

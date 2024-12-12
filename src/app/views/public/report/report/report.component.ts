@@ -16,6 +16,9 @@ export class ReportComponent {
   public data: ZodiacData;
   public clientDetails: Client;
 
+  public step: string = 'begin'; 
+  // ['begin', 'sun', 'moon', 'mission', 'luck', 'relationships']
+
   constructor(
     private readonly _zodiacService: ZodiacService,
     private readonly _clientService: ClientService,
@@ -27,15 +30,17 @@ export class ReportComponent {
       this.data = data;
 
       if (this.data == null) {
-        this.router.navigate(['/quiz/birth-date']).then();
+        // this.router.navigate(['/quiz/birth-date']).then();
       }
 
       this.data['address'] = this.displayFn(this.data['address']);
 
       this.data['hour_birth'] = this.getHourOrMinute(this.data['birth_hour'], 'hour');
       this.data['minute_birth'] = this.getHourOrMinute(this.data['birth_hour'], 'minute');
-      
+    
     });
+
+    
 
     this.getSmallReport();
   }
@@ -58,6 +63,14 @@ export class ReportComponent {
         console.error(error);
       }
     })
+  }
+
+  nextStep(step){
+    this.step = step;
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
   }
 
   viewFullReport() {
