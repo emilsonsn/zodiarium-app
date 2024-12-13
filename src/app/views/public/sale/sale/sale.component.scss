@@ -9,36 +9,38 @@
 
 
     .citation {
-        font-family: 'Georgia', serif;
-        font-style: italic;
-        text-align: center;
-        margin: 20px auto;
-        padding: 20px;
-        border-left: 5px solid #6c757d;
-        color: #575757;
-        background-color: #e7e7e7;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        border-radius: 5px;
-        line-height: 1.6;
-        margin-bottom: 20px;
+      font-family: 'Georgia', serif;
+      font-style: italic;
+      text-align: center;
+      position: relative;
+      margin: 20px auto;
+      padding: 20px;
+      border-left: 5px solid #6c757d;
+      color: #575757;
+      background-color: #e7e7e7;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      border-radius: 5px;
+      line-height: 1.4;
+      font-size: 2rem;
+      margin-bottom: 20px;
     }
     
     .citation::before {
         content: "“";
         font-size: 3rem;
         color: #6c757d;
-        position: relative;
+        position: absolute;
         top: -10px;
-        left: -5px;
+        left: 5px;
     }
     
     .citation::after {
         content: "”";
         font-size: 3rem;
         color: #6c757d;
-        position: relative;
-        top: 10px;
-        right: -5px;
+        position: absolute;
+        bottom: -25px;
+        right: 10px;
     }
     
     
