@@ -4,6 +4,7 @@ export interface Product {
   image: string;
   amount: number;
   is_active: boolean;
+  report: string;
   type: ProductType;
 }
 

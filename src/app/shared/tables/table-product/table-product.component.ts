@@ -39,6 +39,12 @@ export class TableProductComponent {
       align: "justify-content-center",
     },
     {
+      slug: "report",
+      order: true,
+      title: "Relatório",
+      align: "justify-content-center",
+    },
+    {
       slug: "Status",
       order: true,
       title: "Status",

@@ -57,13 +57,18 @@
               </td>
               <td>
                 <div class="text-center">
+                  {{ product?.report | report }}
+                </div>
+              </td>
+              <td>
+                <div class="text-center">
                   <i [class]="product?.is_active ? 'green' : 'red'" class="fa-solid fa-circle"></i>
                   {{ product?.is_active ? 'Ativo' : 'Inativo'}}
                 </div>
               </td>
               <td>
                 <div class="text-center">
-                  {{ product?.amount }}
+                  {{ product?.amount | currency:'EUR' }}
                 </div>
               </td>
               <td>
