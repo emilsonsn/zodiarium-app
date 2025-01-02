@@ -30,6 +30,12 @@ export class LayoutPrivateComponent {
       active: true
     },
     {
+      label: 'Geração',
+      icon: 'fa-solid fa-file-lines',
+      route: '/painel/generate',
+      active: true
+    },
+    {
       label: 'Leads',
       icon: 'fa-solid fa-user',
       route: '/painel/lead',

@@ -24,6 +24,10 @@ const routes: Routes = [
         loadChildren: () => import('./lead/lead.module').then(m => m.LeadModule)
       },
       {
+        path: 'generate',
+        loadChildren: () => import('./generate/generate.module').then(m => m.GenerateModule)
+      },
+      {
         path: 'setting',
         loadChildren: () => import('./setting/setting.module').then(m => m.SettingModule)
       },

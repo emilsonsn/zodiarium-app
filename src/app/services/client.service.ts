@@ -27,6 +27,10 @@ export class ClientService {
     return this._http.post<ApiResponse<Client>>(`${this.baseUrl}/create`, client);
   }
 
+  generate(data: any): Observable<ApiResponse<any>> {
+    return this._http.post<ApiResponse<any>>(`${this.baseUrl}/generate`, data);
+  }
+
   export(status: string): Observable<any> {
     return this._http.get(`${this.baseUrl}/export?status=${status}`, { responseType: 'blob' });
   }
