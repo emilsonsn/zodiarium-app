@@ -11,11 +11,13 @@ import { MatSelectModule } from '@angular/material/select';
 import { NgxMaskDirective } from 'ngx-mask';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
+import { GeneratedComponent } from './generated/generated.component';
 
 
 @NgModule({
   declarations: [
-    GenerateComponent
+    GenerateComponent,
+    GeneratedComponent
   ],
   imports: [
     CommonModule,

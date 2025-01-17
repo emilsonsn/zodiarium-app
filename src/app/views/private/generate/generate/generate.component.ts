@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Product } from '@models/product';
 import { ClientService } from '@services/client.service';
 import { ProductService } from '@services/product.service';
@@ -24,6 +25,7 @@ export class GenerateComponent {
     private readonly _productService: ProductService,
     private readonly _clientService: ClientService,
     private readonly _toastr: ToastrService,
+    private readonly _route: Router
   ){}
 
   ngOnInit(): void {
@@ -80,5 +82,9 @@ export class GenerateComponent {
         this._toastr.error(err.error.message);
       }
     });
+  }
+
+  public goToAll(){
+    this._route.navigate(['/painel/generate/all']);
   }
 }

@@ -7,10 +7,12 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { PipesModule } from '@shared/pipes/pipes.module';
 import { TableProductComponent } from './table-product/table-product.component';
+import { TableGeneratedComponent } from './table-generated/table-generated.component';
 
 const tables = [
   TableClientComponent,
   TableProductComponent,
+  TableGeneratedComponent
 ];
 
 @NgModule({
