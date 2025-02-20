@@ -1,7 +1,6 @@
 <div class="city-container">
   <div class="city-card">
 
-    <!-- Verificação de loading -->
     <ng-container>
       <div class="city-card-header">
         <h3>Especifique o seu local de nascimento</h3>
@@ -20,23 +19,14 @@
         />
         <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
           <mat-option
-            *ngFor="let city of (filteredCities$ | async)"
+            *ngFor="let city of cities"
             [value]="city"
             (onSelectionChange)="onCitySelected(city)">
-            {{ city.name }}
+            {{ city.city }}, {{ city.state }} - {{ city.country }}
           </mat-option>
         </mat-autocomplete>
       </mat-form-field>
     </ng-container>
-
-    <!-- Animação de loading -->
-    <!-- <div class="lottie-container">
-      <ng-lottie
-        containerClass="moving-box"
-        *ngIf="options"
-        [options]="options">
-      </ng-lottie>
-    </div> -->
 
     <!-- Botão "Continuar" -->
     <div class="w-100 d-flex justify-content-center align-items-center mt-4">

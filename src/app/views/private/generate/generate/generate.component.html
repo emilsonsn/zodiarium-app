@@ -28,13 +28,18 @@ class="btn btn-primary"
         </div>
 
         <div class="col-md-6 col-12 mb-2">
-            <mat-form-field appearance="outline">
-              <mat-label>Local de nascimento</mat-label>
-              <mat-select formControlName="address" placeholder="Local de nascimento">
-                <mat-option *ngFor="let city of citys" [value]="city.name">{{ city.name }}</mat-option>
-              </mat-select>
-            </mat-form-field>
-        </div>
+          <mat-form-field appearance="outline">
+            <mat-label>Local de nascimento</mat-label>
+            <input matInput [formControl]="cityControl" [matAutocomplete]="auto" placeholder="Digite o nome da cidade">
+            <mat-autocomplete #auto="matAutocomplete">
+              <mat-option *ngFor="let location of cities" [value]="location.city + ', ' + location.state + ', ' + location.country">
+                {{location.city}},
+                {{location.state}},
+                {{location.country}},
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+        </div>        
 
         <div class="col-md-6 mb-2">
             <mat-form-field appearance="outline">

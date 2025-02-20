@@ -33,7 +33,7 @@ export class ReportComponent {
         // this.router.navigate(['/quiz/birth-date']).then();
       }
 
-      this.data['address'] = this.displayFn(this.data['address']);
+      this.data['address'] = this.data['address'];
 
       this.data['hour_birth'] = this.getHourOrMinute(this.data['birth_hour'], 'hour');
       this.data['minute_birth'] = this.getHourOrMinute(this.data['birth_hour'], 'minute');

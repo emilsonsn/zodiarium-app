@@ -1,10 +1,9 @@
-import {Component, OnInit} from '@angular/core';
-import {Observable} from 'rxjs';
-import {take} from 'rxjs/operators';
-import {ZodiacService} from '@services/quiz/zodiac.service';
-import {Router} from '@angular/router';
-import {AnimationOptions} from "ngx-lottie";
-import {City, CityService} from "@services/quiz/city.service";
+import { Component, OnInit } from '@angular/core';
+import { take, debounceTime, switchMap } from 'rxjs/operators';
+import { ZodiacService } from '@services/quiz/zodiac.service';
+import { Router } from '@angular/router';
+import { AnimationOptions } from "ngx-lottie";
+import { City2Service } from '@services/city2.service';
 
 @Component({
   selector: 'app-city',
@@ -12,9 +11,9 @@ import {City, CityService} from "@services/quiz/city.service";
   styleUrls: ['./city.component.scss'],
 })
 export class CityComponent implements OnInit {
-  filteredCities$: any;
   searchTerm: string = '';
-  selectedCity: City | null = null;
+  selectedCity: any = null;
+  cities: any[] = []; // Agora usamos um array simples
 
   options: AnimationOptions = {
     path: '/assets/animation/Animation - 1732981606697.json',
@@ -23,20 +22,15 @@ export class CityComponent implements OnInit {
   constructor(
     private readonly zodiacService: ZodiacService,
     private readonly router: Router,
-    private _cityService: CityService
-  ) {
-  }
-
-  navigateToQuiz(rota: string) {
-    this.router.navigate([`${rota}`]).then();
-  }
+    private _city2Service: City2Service // Agora usamos apenas o City2Service (GeoNames)
+  ) {}
 
   ngOnInit(): void {
     this.zodiacService.data$.pipe(take(1)).subscribe((data) => {
-      if (data != null && data.address) {
+      if (data?.address) {
         this.selectedCity = data.address;
         this.searchTerm = this.displayFn(data.address);
-      } else if (data == null) {
+      } else if (!data) {
         this.router.navigate(['/quiz/birth-date']).then();
       }
     });
@@ -46,21 +40,29 @@ export class CityComponent implements OnInit {
     const input = event.target as HTMLInputElement;
     const term = input.value.trim();
     if (term.length > 2) {
-      this.filteredCities$ = this._cityService.searchCities(term);
+      this._city2Service.getCities(term).subscribe((cities) => {
+        this.cities = cities; // Atualiza a lista de cidades
+      });
     }
   }
 
   displayFn(city: any): string {
-    return city && city.name ? city.name : '';
+    return city ? `${city.city}, ${city.state} - ${city.country}` : '';
   }
 
-  onCitySelected(city: any): void {
+  onCitySelected(location: any): void {
+    const address = `${location.city}, ${location.state}, ${location.country}`;
     this.zodiacService.data$.pipe(take(1)).subscribe((data) => {
+      data.address = address;
+      console.log(data);
       this.zodiacService.sendData({
-        ...data,
-        address: city,
+        ...data,      
       });
-      this.selectedCity = city;
+      this.selectedCity = address;
     });
+  }
+
+  navigateToQuiz(rota: string) {
+    this.router.navigate([`${rota}`]).then();
   }
 }

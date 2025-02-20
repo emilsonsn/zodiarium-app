@@ -12,6 +12,7 @@ import { NgxMaskDirective } from 'ngx-mask';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { GeneratedComponent } from './generated/generated.component';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { GeneratedComponent } from './generated/generated.component';
     MatInputModule,
     ReactiveFormsModule,
     MatSelectModule,
-    MatButtonModule
+    MatButtonModule,
+    MatAutocompleteModule
   ]
 })
 export class GenerateModule { }
